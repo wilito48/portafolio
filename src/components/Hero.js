@@ -28,11 +28,13 @@ const Hero = () => {
             <div className="avatar-placeholder">
               <div className="avatar-shine"></div>
               <img 
-                src={`${process.env.PUBLIC_URL}/logos/logo-principal.png`} 
+                src="/logos/logo-principal.png" 
                 alt="KW Logo" 
                 className="hero-logo"
                 onError={(e) => {
                   console.error('Error al cargar el logo:', e.target.src);
+                  // Mostrar la ruta completa para depuración
+                  console.log('Ruta completa:', new URL(e.target.src, window.location.origin).href);
                 }}
               />
             </div>
