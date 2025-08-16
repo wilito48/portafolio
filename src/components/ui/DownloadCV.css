@@ -1,0 +1,56 @@
+.download-cv-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-cv-btn.loading {
+  position: relative;
+}
+
+.download-cv-btn.loading span {
+  color: transparent;
+}
+
+.download-cv-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.download-cv-btn span {
+  display: inline-block;
+}
+
+.download-cv-btn svg {
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .download-cv-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-cv-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Los estilos del botón ahora se manejan globalmente en index.css y themes.css */ 

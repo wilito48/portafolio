@@ -1,0 +1,95 @@
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(37, 99, 235, 0.1);
+  transform: scale(1.1);
+}
+
+.toggle-track {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background: var(--bg-light);
+  border: 2px solid var(--border-color);
+  border-radius: 13px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
+}
+
+.toggle-thumb.light {
+  background: #fbbf24;
+  transform: translateX(2px);
+}
+
+.toggle-thumb.dark {
+  background: #4b5563;
+  transform: translateX(26px);
+}
+
+.toggle-thumb svg {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .toggle-thumb svg {
+  transform: rotate(15deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .toggle-track {
+    width: 45px;
+    height: 24px;
+  }
+  
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+  
+  .toggle-thumb.dark {
+    transform: translateX(23px);
+  }
+}
+
+@media (max-width: 480px) {
+  .toggle-track {
+    width: 40px;
+    height: 22px;
+  }
+  
+  .toggle-thumb {
+    width: 16px;
+    height: 16px;
+    font-size: 0.6rem;
+  }
+  
+  .toggle-thumb.dark {
+    transform: translateX(20px);
+  }
+} 
