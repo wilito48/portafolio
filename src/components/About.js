@@ -46,8 +46,6 @@ import proactivoIcon from '../assets/images/proactivo.png';
 import creativoIcon from '../assets/images/creativo.png';
 import avioncitoIcon from '../assets/images/avioncito.png';
 import dartIcon from '../assets/images/dart.png';
-import españolIcon from '../assets/images/español.png';
-import inglesIcon from '../assets/images/ingles.png';
 import linuxIcon from '../assets/images/linux.png';
 import ubuntuIcon from '../assets/images/ubuntu.png';
 import kaliIcon from '../assets/images/kali-linux.png';

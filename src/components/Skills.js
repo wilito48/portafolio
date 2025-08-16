@@ -4,22 +4,12 @@ import {
   FaDatabase,
   FaShieldAlt,
   FaTools,
-  FaCode,
   FaServer,
-  FaLinux,
-  FaWindows,
-  FaNetworkWired,
-  FaEye,
   FaGlobe,
   FaDesktop
 } from 'react-icons/fa';
 import { 
-  SiEclipseide,
-  SiVirtualbox,
-  SiVmware,
-  SiUbuntu,
-  SiKalilinux,
-  SiWindows
+  SiVirtualbox
 } from 'react-icons/si';
 import './Skills.css';
 

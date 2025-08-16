@@ -6,7 +6,6 @@ import {
   FaFolder, 
   FaEnvelope, 
   FaGithub, 
-  FaWhatsapp,
   FaMapMarkerAlt,
   FaPhone,
   FaHeart,
