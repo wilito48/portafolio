@@ -28,9 +28,12 @@ const Hero = () => {
             <div className="avatar-placeholder">
               <div className="avatar-shine"></div>
               <img 
-                src="/logos/logo-principal.png" 
+                src={`${process.env.PUBLIC_URL}/logos/logo-principal.png`} 
                 alt="KW Logo" 
                 className="hero-logo"
+                onError={(e) => {
+                  console.error('Error al cargar el logo:', e.target.src);
+                }}
               />
             </div>
           </div>

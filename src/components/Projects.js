@@ -44,7 +44,7 @@ const Projects = () => {
       githubLink: "https://github.com/wilito48/arquitectura.git",
       category: "web",
       icon: "🏢",
-      image: "/images/proyectos/arquitectura/img1.jpg"
+      image: process.env.PUBLIC_URL + "/images/proyectos/arquitectura/img1.jpg"
     },
     {
       id: 2,
@@ -61,7 +61,7 @@ const Projects = () => {
       githubLink: "https://github.com/wilito48/Nobicursos.git",
       category: "web",
       icon: "🎓",
-      image: "/images/proyectos/nobicursos/img1.jpg"
+      image: process.env.PUBLIC_URL + "/images/proyectos/nobicursos/img1.jpg"
     },
     {
       id: 3,
@@ -78,7 +78,7 @@ const Projects = () => {
       githubLink: "https://github.com/kervynwilly/portfolio",
       category: "web",
       icon: "🚀",
-      image: "/images/proyectos/portafolio/img1.jpg"
+      image: process.env.PUBLIC_URL + "/images/proyectos/portafolio/img1.jpg"
     },
     {
       id: 4,
@@ -95,7 +95,7 @@ const Projects = () => {
       githubLink: "https://github.com/wilito48/inventario_olla.git",
       category: "mobile",
       icon: "📱",
-      image: "/images/proyectos/inventario-olla/img-1.jpg"
+      image: process.env.PUBLIC_URL + "/images/proyectos/inventario-olla/img-1.jpg"
     },
     {
       id: 5,
@@ -112,7 +112,7 @@ const Projects = () => {
       githubLink: "https://github.com/kervynwilly/cursos-platform",
       category: "web",
       icon: "🎓",
-      image: "/images/courses-platform-preview.jpg"
+      image: process.env.PUBLIC_URL + "/images/courses-platform-preview.jpg"
     },
     {
       id: 6,
@@ -129,7 +129,7 @@ const Projects = () => {
       githubLink: "https://github.com/wilito48/PracticaCampo14.git",
       category: "desktop",
       icon: "🗳️",
-      image: "/images/proyectos/votacion-electronica/img1.png"
+      image: process.env.PUBLIC_URL + "/images/proyectos/votacion-electronica/img1.png"
     },
     {
       id: 7,
@@ -147,7 +147,7 @@ const Projects = () => {
       githubLink: "https://github.com/wilito48/tienda_vesfay_xd.git",
       category: "web",
       icon: "🛍️",
-      image: "/images/proyectos/vesfay/proyecto1.PNG"
+      image: process.env.PUBLIC_URL + "/images/proyectos/vesfay/proyecto1.PNG"
     }
   ];
 
@@ -272,4 +272,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
