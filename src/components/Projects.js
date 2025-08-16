@@ -74,8 +74,8 @@ const Projects = () => {
         "Navegación suave",
         "Optimización SEO"
       ],
-      demoLink: "#",
-      githubLink: "https://github.com/kervynwilly/portfolio",
+      demoLink: "https://portafolio-sigma-fawn.vercel.app/",
+      githubLink: "https://github.com/wilito48/portafolio.git",
       category: "web",
       icon: "🚀",
       image: process.env.PUBLIC_URL + "/images/proyectos/portafolio/img1.jpg"
