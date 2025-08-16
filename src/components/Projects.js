@@ -129,7 +129,7 @@ const Projects = () => {
       githubLink: "https://github.com/wilito48/PracticaCampo14.git",
       category: "desktop",
       icon: "🗳️",
-      image: process.env.PUBLIC_URL + "/images/proyectos/votacion-electronica/img1.png"
+      image: process.env.PUBLIC_URL + "/images/proyectos/votacion-electronica/img1.PNG"
     },
     {
       id: 7,
