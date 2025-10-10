@@ -9,25 +9,37 @@ const DownloadCV = () => {
     setIsDownloading(true);
     
     try {
-      // Intentar descargar el archivo PDF
-      const response = await fetch('/cv-kervyn-willy.pdf');
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'CV-Kervyn-Willy-Rojas-Poma.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      } else {
-        // Si no existe el archivo, mostrar un mensaje
-        alert('El archivo CV no está disponible en este momento.');
+      // Usar una ruta absoluta relativa a la raíz pública
+      const pdfUrl = process.env.PUBLIC_URL + '/cv-kervyn-willy.pdf';
+      console.log('Intentando descargar desde:', pdfUrl);
+      
+      // Verificar si el archivo existe
+      const checkResponse = await fetch(pdfUrl, { method: 'HEAD' });
+      
+      if (!checkResponse.ok) {
+        throw new Error('Archivo no encontrado');
       }
+      
+      // Si el archivo existe, proceder con la descarga
+      const response = await fetch(pdfUrl);
+      
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'CV-Kervyn-Willy-Rojas-Poma.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
     } catch (error) {
       console.error('Error al descargar el CV:', error);
-      alert('Error al descargar el CV. Por favor, inténtalo más tarde.');
+      alert(`Error al descargar el CV: ${error.message}. Por favor, verifica que el archivo exista en la ruta correcta.`);
     } finally {
       setIsDownloading(false);
     }
@@ -52,4 +64,4 @@ const DownloadCV = () => {
   );
 };
 
-export default DownloadCV; 
+export default DownloadCV;
