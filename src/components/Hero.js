@@ -28,7 +28,7 @@ const Hero = () => {
             <div className="avatar-placeholder">
               <div className="avatar-shine"></div>
               <img 
-                src="/logos/logo-principal.png" 
+                src="/logos/yo.jpg" 
                 alt="KW Logo" 
                 className="hero-logo"
                 onError={(e) => {
