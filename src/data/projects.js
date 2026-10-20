@@ -7,6 +7,7 @@ export const CATEGORIES = {
 const projectData = [
   {
     slug: 'arquitectura',
+    featured: true,
     technologies: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
     demoLink: 'https://arquitectura-omega.vercel.app/',
     githubLink: 'https://github.com/wilito48/arquitectura.git',
@@ -16,6 +17,7 @@ const projectData = [
   },
   {
     slug: 'ruta-academica',
+    featured: true,
     technologies: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'Docker'],
     category: 'web',
     icon: '📚',
@@ -23,6 +25,7 @@ const projectData = [
   },
   {
     slug: 'z-erok',
+    featured: true,
     technologies: ['Flutter', 'Firebase', 'Java', 'Spring Boot', 'PostgreSQL'],
     category: 'mobile',
     icon: '💰',
@@ -30,6 +33,7 @@ const projectData = [
   },
   {
     slug: 'agro-ahorro-ayacucho',
+    featured: true,
     technologies: ['React Native (Expo)', 'NestJS', 'Prisma', 'PostgreSQL', 'Docker'],
     category: 'mobile',
     icon: '🌽',

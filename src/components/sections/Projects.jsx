@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo, useRef, useState } from 'react';
 import { FaCode, FaFilter } from 'react-icons/fa';
 import SectionHeader from '../ui/SectionHeader';
 import ProjectCard from '../projects/ProjectCard';
+import ProjectStack from '../projects/ProjectStack';
 import { CATEGORIES, projects } from '../../data/projects';
 import { useLanguage } from '../../hooks/useLanguage';
 import { localizeProject } from '../../i18n/localize';
@@ -10,6 +11,7 @@ import { Flip, gsap, MOTION_OK, ScrollTrigger, useGSAP } from '../../lib/gsap';
 const Lightbox = lazy(() => import('../projects/Lightbox'));
 
 const ALL = 'all';
+const CARD_SELECTOR = '[data-project]';
 
 const filters = [
   { id: ALL, icon: '📁', count: projects.length },
@@ -50,8 +52,9 @@ const Projects = () => {
 
   const selectFilter = (id) => {
     if (id === activeFilter) return;
-    gsap.set(listRef.current.children, { autoAlpha: 1, y: 0 });
-    flipState.current = Flip.getState(listRef.current.children);
+    const cards = listRef.current.querySelectorAll(CARD_SELECTOR);
+    gsap.set(cards, { autoAlpha: 1, y: 0 });
+    flipState.current = Flip.getState(cards);
     setActiveFilter(id);
   };
 
@@ -67,7 +70,7 @@ const Projects = () => {
       }
 
       Flip.from(state, {
-        targets: listRef.current.children,
+        targets: listRef.current.querySelectorAll(CARD_SELECTOR),
         duration: 0.6,
         ease: 'power3.inOut',
         onEnter: (elements) =>
@@ -86,10 +89,23 @@ const Projects = () => {
     [activeFilter, t]
   );
 
+  const showStack = activeFilter === ALL;
+  const featured = showStack ? filteredProjects.filter((project) => project.featured) : [];
+  const regular = showStack ? filteredProjects.filter((project) => !project.featured) : filteredProjects;
+
+  const renderCard = (project, index) => (
+    <ProjectCard
+      key={project.slug}
+      project={project}
+      reversed={index % 2 === 1}
+      onOpenImage={(imageIndex, source) => setViewer({ project, index: imageIndex, source })}
+    />
+  );
+
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc,#e2e8f0)] py-16 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.1),transparent_50%)] md:py-24 dark:bg-[linear-gradient(135deg,#0f172a,#1e293b)]"
+      className="relative overflow-clip bg-[linear-gradient(135deg,#f8fafc,#e2e8f0)] py-16 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.1),transparent_50%)] md:py-24 dark:bg-[linear-gradient(135deg,#0f172a,#1e293b)]"
     >
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 md:px-8">
         <SectionHeader icon={FaCode} variant="vivid" title={t.projects.title} subtitle={t.projects.subtitle} />
@@ -110,15 +126,9 @@ const Projects = () => {
           ))}
         </div>
 
-        <div ref={listRef} className="grid gap-7 md:gap-10">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              reversed={index % 2 === 1}
-              onOpenImage={(imageIndex, source) => setViewer({ project, index: imageIndex, source })}
-            />
-          ))}
+        <div ref={listRef} className="flex flex-col gap-7 md:gap-10">
+          {featured.length > 0 && <ProjectStack>{featured.map(renderCard)}</ProjectStack>}
+          {regular.map((project, index) => renderCard(project, featured.length + index))}
         </div>
 
         {filteredProjects.length === 0 && (

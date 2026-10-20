@@ -59,7 +59,8 @@ const ProjectCard = ({ project, reversed, onOpenImage }) => {
   return (
     <article
       data-reveal
-      className="group relative grid gap-7 overflow-hidden rounded-[20px] border border-white/30 bg-white/95 p-3 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-shadow duration-500 after:absolute after:inset-x-0 after:top-0 after:h-1 after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899)] after:transition-transform after:duration-500 hover:shadow-[0_20px_45px_rgba(15,23,42,0.15)] hover:after:scale-x-100 sm:p-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-start lg:gap-10 lg:p-6 dark:border-line dark:bg-surface-muted"
+      data-project
+      className="group relative grid gap-7 overflow-hidden rounded-[20px] border border-white/30 bg-white p-3 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-shadow duration-500 after:absolute after:inset-x-0 after:top-0 after:h-1 after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899)] after:transition-transform after:duration-500 hover:shadow-[0_20px_45px_rgba(15,23,42,0.15)] hover:after:scale-x-100 sm:p-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-start lg:gap-10 lg:p-6 dark:border-line dark:bg-surface-muted"
     >
       <div className={reversed ? 'lg:order-2' : ''}>
         <ProjectMedia project={project} onOpen={onOpenImage} />

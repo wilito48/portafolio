@@ -62,7 +62,7 @@ actualiza esas URLs. Los CV descargables están en `public/cv-kervyn-rojas.pdf` 
 ## Agregar capturas a un proyecto
 
 1. Copia las imágenes en `public/images/proyectos/<slug>/`.
-2. Añádelas al arreglo `images` del proyecto en `src/data/projects.js`:
+2. Añádelas al arreglo `images` del proyecto en `src/data/projects.js` (con `featured: true` el proyecto entra en la pila de destacados):
 
 ```js
 images: [
@@ -81,20 +81,21 @@ Tamaños recomendados: web ~1600×1000 y móvil ~1080×2340, en `.jpg` o `.webp`
 
 ## Animaciones (GSAP)
 
-| Dónde             | Qué hace                                                                                                         | Archivo                                                 |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| Todo el sitio     | Elementos con `data-reveal` aparecen al entrar en pantalla                                                       | `hooks/useScrollReveal.js`                              |
-| Inicio            | Entrada escalonada, subtítulo letra por letra (SplitText), parallax y botones magnéticos                         | `sections/Hero.jsx`, `ui/Magnetic.jsx`                  |
-| Foto de perfil    | Órbita de integraciones (WhatsApp, Instagram, Messenger, Facebook, TikTok) que gira y se frena al pasar el mouse | `hero/ProfileOrbit.jsx`, `data/integrations.js`         |
-| Sobre mí          | Línea de experiencia que se dibuja con el scroll y cifras que cuentan                                            | `about/ExperienceTimeline.jsx`, `about/StatCounter.jsx` |
-| Proyectos         | Transición Flip al filtrar y deslizamiento entre capturas                                                        | `sections/Projects.jsx`, `projects/ProjectMedia.jsx`    |
-| Header            | Barra de progreso de lectura; se oculta al bajar y reaparece al subir                                            | `layout/ScrollProgress.jsx`, `hooks/useHideOnScroll.js` |
-| Menú              | Indicador que se desliza a la sección activa y enlaces en cascada en móvil                                       | `layout/Navigation.jsx`, `layout/MenuButton.jsx`        |
-| Habilidades       | Logos que aparecen en cascada desde el centro                                                                    | `sections/Skills.jsx`                                   |
-| Visor             | Las capturas se abren con zoom desde su miniatura y vuelven a ella al cerrar                                     | `projects/Lightbox.jsx`                                 |
-| Inicio → Sobre mí | Cinta infinita de tecnologías que acelera y cambia de dirección con el scroll                                    | `sections/TechMarquee.jsx`                              |
-| Mi historia       | Las palabras pasan de tenues a nítidas mientras haces scroll                                                     | `about/StoryText.jsx`                                   |
-| Proyectos (3D)    | Los mockups entran inclinados en perspectiva y se enderezan con el scroll                                        | `projects/ScrollTilt.jsx`                               |
+| Dónde                | Qué hace                                                                                                                       | Archivo                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| Todo el sitio        | Elementos con `data-reveal` aparecen al entrar en pantalla                                                                     | `hooks/useScrollReveal.js`                              |
+| Inicio               | Entrada escalonada, subtítulo letra por letra (SplitText), parallax y botones magnéticos                                       | `sections/Hero.jsx`, `ui/Magnetic.jsx`                  |
+| Foto de perfil       | Órbita de integraciones (WhatsApp, Instagram, Messenger, Facebook, TikTok) que gira y se frena al pasar el mouse               | `hero/ProfileOrbit.jsx`, `data/integrations.js`         |
+| Sobre mí             | Línea de experiencia que se dibuja con el scroll y cifras que cuentan                                                          | `about/ExperienceTimeline.jsx`, `about/StatCounter.jsx` |
+| Proyectos            | Transición Flip al filtrar y deslizamiento entre capturas                                                                      | `sections/Projects.jsx`, `projects/ProjectMedia.jsx`    |
+| Header               | Barra de progreso de lectura; se oculta al bajar y reaparece al subir                                                          | `layout/ScrollProgress.jsx`, `hooks/useHideOnScroll.js` |
+| Menú                 | Indicador que se desliza a la sección activa y enlaces en cascada en móvil                                                     | `layout/Navigation.jsx`, `layout/MenuButton.jsx`        |
+| Habilidades          | Logos que aparecen en cascada desde el centro                                                                                  | `sections/Skills.jsx`                                   |
+| Visor                | Las capturas se abren con zoom desde su miniatura y vuelven a ella al cerrar                                                   | `projects/Lightbox.jsx`                                 |
+| Inicio → Sobre mí    | Cinta infinita de tecnologías que acelera y cambia de dirección con el scroll                                                  | `sections/TechMarquee.jsx`                              |
+| Mi historia          | Las palabras pasan de tenues a nítidas mientras haces scroll                                                                   | `about/StoryText.jsx`                                   |
+| Proyectos (3D)       | Los mockups entran inclinados en perspectiva y se enderezan con el scroll                                                      | `projects/ScrollTilt.jsx`                               |
+| Proyectos destacados | En escritorio (≥1024 px de ancho y ≥820 px de alto) las 4 tarjetas con `featured: true` se apilan como un mazo al hacer scroll | `projects/ProjectStack.jsx`                             |
 
 Todas se desactivan si el sistema pide reducir movimiento, y el efecto magnético solo se activa con mouse.
 
