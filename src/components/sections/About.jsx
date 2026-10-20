@@ -1,5 +1,3 @@
-import { LuBookOpenText } from 'react-icons/lu';
-import IconTile from '../ui/IconTile';
 import SectionHeader from '../ui/SectionHeader';
 import ExperienceTimeline from '../about/ExperienceTimeline';
 import StatCounter from '../about/StatCounter';
@@ -7,15 +5,25 @@ import StoryText from '../about/StoryText';
 import { certifications, experience, sectionIcons, stats, traits } from '../../data/about';
 import { useLanguage } from '../../hooks/useLanguage';
 
-const TILE =
-  'relative overflow-hidden rounded-2xl border border-line bg-surface p-6 shadow-[0_4px_20px_-8px_rgba(15,23,42,0.12)] transition-[translate,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-[0_18px_40px_-16px_rgba(99,102,241,0.35)] md:p-7';
+const CARD =
+  'rounded-xl bg-surface shadow-[0_4px_6px_rgba(0,0,0,0.05)] transition-[translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)] dark:border dark:border-line';
 
-const TileTitle = ({ icon, children }) => (
-  <h3 className="mb-5 flex items-center gap-3 text-xl font-bold text-ink">
-    <IconTile icon={icon} size="sm" />
+const SubsectionTitle = ({ icon, children }) => (
+  <h3
+    data-reveal
+    className="mb-8 flex items-center justify-center gap-4 text-center text-2xl font-semibold text-ink md:text-[1.75rem]"
+  >
+    <img src={icon} alt="" className="size-[45px] object-contain" />
     {children}
   </h3>
 );
+
+const TraitIcon = ({ icon: Icon, title }) =>
+  typeof Icon === 'string' ? (
+    <img src={Icon} alt={title} className="size-[55px] object-contain transition-transform hover:scale-110" />
+  ) : (
+    <Icon className="text-5xl text-primary" aria-hidden="true" />
+  );
 
 const About = () => {
   const { lang, t } = useLanguage();
@@ -29,88 +37,90 @@ const About = () => {
   return (
     <section id="about" className="bg-surface-muted py-16 md:py-20">
       <div className="mx-auto max-w-[1200px] px-4 md:px-8">
-        <SectionHeader index="01" label={t.nav.about} title={about.title} subtitle={about.subtitle} />
+        <SectionHeader title={about.title} subtitle={about.subtitle} />
 
-        <div className="mb-20 grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
-          <article data-reveal className={`${TILE} col-span-2 lg:row-span-2`}>
-            <TileTitle icon={LuBookOpenText}>{about.storyTitle}</TileTitle>
+        <div className="mb-16 grid gap-12 lg:grid-cols-2 lg:gap-15">
+          <div>
+            <h3 data-reveal className="mb-5 text-2xl font-semibold text-ink">
+              {about.storyTitle}
+            </h3>
             <StoryText key={lang} paragraphs={about.story} />
-          </article>
+          </div>
 
-          {stats.map((stat) => (
-            <StatCounter
-              key={stat.id}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={about.stats[stat.id]}
-              className={`${TILE} flex flex-col items-center justify-center text-center`}
-            />
-          ))}
-
-          <article data-reveal className={`${TILE} col-span-2`}>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div className="flex items-start gap-4">
-                <IconTile icon={sectionIcons.education} size="lg" />
-                <div>
-                  <p className="mb-1 text-xs font-bold tracking-[0.15em] text-ink-faint uppercase">
-                    {about.educationTitle}
-                  </p>
-                  <h3 className="mb-1 text-xl font-bold text-ink">{about.education.degree}</h3>
-                  <p className="text-ink-muted">{about.education.institution}</p>
-                  <p className="text-sm font-medium text-ink-faint">{about.education.detail}</p>
-                </div>
-              </div>
-              <span className="self-start rounded-full bg-[linear-gradient(135deg,#3b82f6,#8b5cf6)] px-3 py-1 text-sm font-semibold whitespace-nowrap text-white">
-                {about.education.status}
-              </span>
-            </div>
-          </article>
-
-          <article data-reveal className={`${TILE} col-span-2 lg:row-span-2`}>
-            <TileTitle icon={sectionIcons.certifications}>{about.certificationsTitle}</TileTitle>
-            <ul className="divide-y divide-line">
-              {certifications.map((id) => {
-                const { title, issuer } = about.certifications[id];
-                return (
-                  <li key={id} className="flex items-start gap-3 py-3.5 first:pt-0 last:pb-0">
-                    <IconTile icon={sectionIcons.certification} size="sm" variant="soft" />
-                    <div>
-                      <p className="font-semibold text-ink">{title}</p>
-                      <p className="text-sm text-ink-muted">{issuer}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </article>
-
-          <article data-reveal className={`${TILE} col-span-2`}>
-            <TileTitle icon={sectionIcons.experience}>{about.traitsTitle}</TileTitle>
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {traits.map(({ id, icon }) => {
-                const { title, text } = about.traits[id];
-                return (
-                  <li key={id} className="flex items-start gap-3">
-                    <IconTile icon={icon} size="sm" variant="soft" />
-                    <div>
-                      <p className="font-semibold text-ink">{title}</p>
-                      <p className="text-sm leading-snug text-ink-muted">{text}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </article>
+          <div className="grid grid-cols-2 gap-4 self-center sm:gap-7">
+            {stats.map((stat) => (
+              <StatCounter
+                key={stat.id}
+                value={stat.value}
+                suffix={stat.suffix}
+                label={about.stats[stat.id]}
+                className={`${CARD} px-4 py-7 text-center sm:px-5`}
+              />
+            ))}
+          </div>
         </div>
 
-        <h3
-          data-reveal
-          className="mb-10 flex items-center justify-center gap-3 text-center text-2xl font-bold text-ink md:text-[1.75rem]"
-        >
-          <IconTile icon={sectionIcons.experience} />
-          {about.experienceTitle}
-        </h3>
-        <ExperienceTimeline items={timeline} />
+        <div className="mb-16">
+          <SubsectionTitle icon={sectionIcons.experience}>{about.experienceTitle}</SubsectionTitle>
+          <ExperienceTimeline items={timeline} />
+        </div>
+
+        <div className="mb-16 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 md:gap-7">
+          {traits.map(({ id, icon }) => {
+            const { title, text } = about.traits[id];
+            return (
+              <div key={id} data-reveal className={`${CARD} p-7 text-center`}>
+                <div className="mb-5 flex justify-center">
+                  <TraitIcon icon={icon} title={title} />
+                </div>
+                <h4 className="mb-3.5 text-xl font-semibold text-ink">{title}</h4>
+                <p className="leading-relaxed text-ink-muted">{text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mb-16">
+          <SubsectionTitle icon={sectionIcons.education}>{about.educationTitle}</SubsectionTitle>
+          <div
+            data-reveal
+            className="flex flex-col gap-4 rounded-xl border-l-4 border-primary bg-surface p-6 shadow-[0_4px_6px_rgba(0,0,0,0.05)] sm:flex-row sm:items-start sm:justify-between md:p-8 dark:border-y dark:border-r dark:border-y-line dark:border-r-line"
+          >
+            <div className="flex items-start gap-5">
+              <img
+                src={sectionIcons.university}
+                alt="Universidad Privada del Norte"
+                className="size-[45px] object-contain"
+              />
+              <div>
+                <h4 className="mb-2 text-xl font-semibold text-ink">{about.education.degree}</h4>
+                <p className="mb-1 text-ink-muted">{about.education.institution}</p>
+                <p className="text-sm font-medium text-ink-faint">{about.education.detail}</p>
+              </div>
+            </div>
+            <span className="self-start rounded-full bg-primary px-3 py-1 text-sm font-medium text-white">
+              {about.education.status}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <SubsectionTitle icon={sectionIcons.certifications}>{about.certificationsTitle}</SubsectionTitle>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-5">
+            {certifications.map((id) => {
+              const { title, issuer } = about.certifications[id];
+              return (
+                <div key={id} data-reveal className={`${CARD} p-6`}>
+                  <div className="mb-2.5 flex items-center gap-4">
+                    <img src={sectionIcons.certification} alt="" className="size-10 shrink-0 object-contain" />
+                    <h4 className="text-lg font-semibold text-ink">{title}</h4>
+                  </div>
+                  <p className="text-sm text-ink-muted">{issuer}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { FaExternalLinkAlt, FaGithub, FaRocket } from 'react-icons/fa';
-import { LuCheck, LuSparkles } from 'react-icons/lu';
-import IconTile from '../ui/IconTile';
 import Button from '../ui/Button';
 import ProjectMedia from './ProjectMedia';
 import { CATEGORIES } from '../../data/projects';
@@ -11,7 +9,7 @@ const VISIBLE_FEATURES = 4;
 
 const Badge = ({ muted, children }) => (
   <span
-    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.8rem] font-semibold ${
+    className={`rounded-full px-3 py-1 text-[0.8rem] font-semibold ${
       muted
         ? 'bg-slate-500/10 text-slate-500 dark:text-slate-400'
         : 'bg-[linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.12))] text-blue-500 dark:text-blue-300'
@@ -29,14 +27,13 @@ const FeatureList = ({ features }) => {
 
   return (
     <div className="mb-7 rounded-[15px] border border-slate-200/70 bg-slate-50/80 p-5 dark:border-slate-400/20 dark:bg-slate-700/60">
-      <h4 className="mb-3.5 flex items-center gap-2 font-bold text-ink">
-        <LuSparkles className="text-violet-500" aria-hidden="true" />
-        {t.projects.features}
-      </h4>
+      <h4 className="mb-3.5 font-bold text-ink">✨ {t.projects.features}</h4>
       <ul className="grid gap-2.5">
         {visible.map((feature) => (
           <li key={feature} className="flex items-baseline gap-2.5 text-[0.93rem] text-slate-500 dark:text-slate-300">
-            <LuCheck className="shrink-0 translate-y-0.5 text-emerald-500" aria-hidden="true" />
+            <span className="shrink-0 font-bold text-emerald-500" aria-hidden="true">
+              ✓
+            </span>
             {feature}
           </li>
         ))}
@@ -58,7 +55,6 @@ const FeatureList = ({ features }) => {
 const ProjectCard = ({ project, reversed, onOpenImage }) => {
   const { t } = useLanguage();
   const { title, description, technologies, features, demoLink, githubLink, category, icon, images } = project;
-  const CategoryIcon = CATEGORIES[category].icon;
 
   return (
     <article
@@ -73,14 +69,15 @@ const ProjectCard = ({ project, reversed, onOpenImage }) => {
       <div className="flex min-w-0 flex-col px-1 pb-2 lg:self-stretch lg:py-2">
         <div className="mb-4 flex flex-wrap gap-2">
           <Badge>
-            <CategoryIcon aria-hidden="true" />
-            {t.projects.categories[category]}
+            {CATEGORIES[category].icon} {t.projects.categories[category]}
           </Badge>
           {images.length > 1 && <Badge muted>{t.projects.screenshotCount(images.length)}</Badge>}
         </div>
 
         <div className="mb-4 flex items-center gap-2.5">
-          <IconTile icon={icon} size="md" />
+          <span className="shrink-0 text-2xl" aria-hidden="true">
+            {icon}
+          </span>
           <h3 className="text-gradient text-xl leading-snug font-extrabold sm:text-2xl">{title}</h3>
         </div>
 

@@ -38,7 +38,8 @@ src/
 ├── i18n/                 Proveedor de idioma, diccionarios es/en y utilidades de traducción
 ├── lib/gsap.js           Registro de GSAP y ScrollTrigger
 └── assets/
-    └── images/           Foto de perfil
+    ├── images/           Foto de perfil
+    └── icons/            Íconos decorativos (nav, contact, about, flags)
 ```
 
 Los datos neutros (íconos, enlaces, tecnologías, imágenes) viven en `src/data/` y todos los textos en
@@ -51,12 +52,6 @@ Los datos neutros (íconos, enlaces, tecnologías, imágenes) viven en `src/data
 - Para cambiar un texto, edítalo en ambos archivos de `src/i18n/locales/`; tienen exactamente la misma estructura.
 - Al agregar un proyecto, añade sus datos en `src/data/projects.js` y su título, descripción y características
   en `projects.items.<slug>` de ambos idiomas.
-
-## Íconos
-
-Todos los íconos de interfaz son SVG de Lucide (`react-icons/lu`). Para mostrarlos en un recuadro con el degradado de la
-marca se usa `components/ui/IconTile.jsx` (variantes `gradient` y `soft`). Los logos de tecnologías y redes viven en
-`data/techIcons.js` y `data/integrations.js`.
 
 ## Página 404
 

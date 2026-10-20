@@ -102,7 +102,6 @@ const es = {
       curious: { title: 'Curioso', text: 'Interés constante por nuevas tecnologías, IA y buenas prácticas' },
       dedicated: { title: 'Dedicado', text: 'Compromiso con cada entrega, del desarrollo a producción' },
     },
-    traitsTitle: 'Cómo trabajo',
     educationTitle: 'Formación Académica',
     education: {
       degree: 'Ingeniería de Sistemas Computacionales',

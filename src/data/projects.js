@@ -1,23 +1,7 @@
-import {
-  LuBookOpen,
-  LuBuilding2,
-  LuGlobe,
-  LuGraduationCap,
-  LuMonitor,
-  LuPackage,
-  LuPanelsTopLeft,
-  LuSchool,
-  LuShoppingBag,
-  LuSmartphone,
-  LuVote,
-  LuWallet,
-  LuWheat,
-} from 'react-icons/lu';
-
 export const CATEGORIES = {
-  web: { icon: LuGlobe, defaultDevice: 'screen' },
-  mobile: { icon: LuSmartphone, defaultDevice: 'phone' },
-  desktop: { icon: LuMonitor, defaultDevice: 'screen' },
+  web: { icon: '🌐', defaultDevice: 'screen' },
+  mobile: { icon: '📱', defaultDevice: 'phone' },
+  desktop: { icon: '💻', defaultDevice: 'screen' },
 };
 
 const projectData = [
@@ -28,7 +12,7 @@ const projectData = [
     demoLink: 'https://arquitectura-omega.vercel.app/',
     githubLink: 'https://github.com/wilito48/arquitectura.git',
     category: 'web',
-    icon: LuBuilding2,
+    icon: '🏢',
     images: ['img1.jpg'],
   },
   {
@@ -36,7 +20,7 @@ const projectData = [
     featured: true,
     technologies: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'Docker'],
     category: 'web',
-    icon: LuBookOpen,
+    icon: '📚',
     images: [],
   },
   {
@@ -44,7 +28,7 @@ const projectData = [
     featured: true,
     technologies: ['Flutter', 'Firebase', 'Java', 'Spring Boot', 'PostgreSQL'],
     category: 'mobile',
-    icon: LuWallet,
+    icon: '💰',
     images: [],
   },
   {
@@ -52,7 +36,7 @@ const projectData = [
     featured: true,
     technologies: ['React Native (Expo)', 'NestJS', 'Prisma', 'PostgreSQL', 'Docker'],
     category: 'mobile',
-    icon: LuWheat,
+    icon: '🌽',
     images: [],
   },
   {
@@ -61,7 +45,7 @@ const projectData = [
     demoLink: 'https://nobicursos.vercel.app/',
     githubLink: 'https://github.com/wilito48/Nobicursos.git',
     category: 'web',
-    icon: LuGraduationCap,
+    icon: '🎓',
     images: ['img1.jpg'],
   },
   {
@@ -70,7 +54,7 @@ const projectData = [
     demoLink: 'https://tienda-vesfay-xd.vercel.app/',
     githubLink: 'https://github.com/wilito48/tienda_vesfay_xd.git',
     category: 'web',
-    icon: LuShoppingBag,
+    icon: '🛍️',
     images: ['img1.jpg'],
   },
   {
@@ -78,7 +62,7 @@ const projectData = [
     technologies: ['Flutter', 'Dart', 'SQLite'],
     githubLink: 'https://github.com/wilito48/inventario_olla.git',
     category: 'mobile',
-    icon: LuPackage,
+    icon: '📱',
     images: ['img1.jpg'],
   },
   {
@@ -86,7 +70,7 @@ const projectData = [
     technologies: ['Java', 'Java Swing', 'MySQL', 'XAMPP'],
     githubLink: 'https://github.com/wilito48/PracticaCampo14.git',
     category: 'desktop',
-    icon: LuVote,
+    icon: '🗳️',
     images: ['img1.jpg'],
   },
   {
@@ -95,7 +79,7 @@ const projectData = [
     demoLink: 'https://portafolio-sigma-fawn.vercel.app/',
     githubLink: 'https://github.com/wilito48/portafolio.git',
     category: 'web',
-    icon: LuPanelsTopLeft,
+    icon: '🚀',
     images: ['img1.jpg'],
   },
   {
@@ -103,7 +87,7 @@ const projectData = [
     technologies: ['Node.js', 'MongoDB', 'Tailwind CSS', 'JavaScript'],
     githubLink: 'https://github.com/kervynwilly/cursos-platform',
     category: 'web',
-    icon: LuSchool,
+    icon: '🎓',
     images: [],
   },
 ];

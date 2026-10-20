@@ -19,11 +19,11 @@ const StatCounter = ({ value, suffix = '', label, className = '' }) => {
 
   return (
     <div data-reveal className={className}>
-      <p className="mb-2 text-gradient-vivid text-[2.25rem] leading-none font-extrabold tabular-nums sm:text-[2.75rem]">
+      <p className="mb-2.5 text-[2rem] font-bold text-primary tabular-nums sm:text-[2.5rem]">
         <span ref={numberRef}>{value}</span>
         {suffix}
       </p>
-      <p className="text-sm font-medium text-ink-muted sm:text-base">{label}</p>
+      <p className="font-medium text-ink-muted">{label}</p>
     </div>
   );
 };
