@@ -102,6 +102,7 @@ const es = {
       curious: { title: 'Curioso', text: 'Interés constante por nuevas tecnologías, IA y buenas prácticas' },
       dedicated: { title: 'Dedicado', text: 'Compromiso con cada entrega, del desarrollo a producción' },
     },
+    traitsTitle: 'Cómo trabajo',
     educationTitle: 'Formación Académica',
     education: {
       degree: 'Ingeniería de Sistemas Computacionales',
@@ -311,6 +312,14 @@ const es = {
       email: 'Enviar email',
       call: 'Llamar',
     },
+  },
+  notFound: {
+    metaTitle: 'Página no encontrada — Kervyn Rojas',
+    eyebrow: 'Error 404',
+    title: 'Esta página no existe',
+    text: 'Puede que el enlace esté mal escrito o que la página se haya movido. Volvamos a terreno conocido.',
+    home: 'Volver al inicio',
+    projects: 'Ver proyectos',
   },
   footer: {
     quickLinks: 'Enlaces Rápidos',

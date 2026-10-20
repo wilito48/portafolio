@@ -1,37 +1,18 @@
-import {
-  FaCode,
-  FaEnvelope,
-  FaFolder,
-  FaGithub,
-  FaHeart,
-  FaHome,
-  FaLinkedin,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaReact,
-  FaUser,
-} from 'react-icons/fa';
+import { FaHeart, FaReact } from 'react-icons/fa';
+import { LuGithub, LuLinkedin, LuMail, LuMapPin, LuPhone } from 'react-icons/lu';
 import { navigation } from '../../data/navigation';
 import { profile } from '../../data/profile';
 import { useLanguage } from '../../hooks/useLanguage';
 
-const QUICK_LINK_ICONS = {
-  home: FaHome,
-  about: FaUser,
-  skills: FaCode,
-  projects: FaFolder,
-  contact: FaEnvelope,
-};
-
 const contactLines = [
-  { icon: FaPhone, text: profile.phone.display },
-  { icon: FaEnvelope, text: profile.email },
+  { icon: LuPhone, text: profile.phone.display },
+  { icon: LuMail, text: profile.email },
 ];
 
 const socialLinks = [
-  { label: 'GitHub', href: profile.github.url, icon: FaGithub },
-  { label: 'LinkedIn', href: profile.linkedin.url, icon: FaLinkedin },
-  { label: 'Email', href: `mailto:${profile.email}`, icon: FaEnvelope },
+  { label: 'GitHub', href: profile.github.url, icon: LuGithub },
+  { label: 'LinkedIn', href: profile.linkedin.url, icon: LuLinkedin },
+  { label: 'Email', href: `mailto:${profile.email}`, icon: LuMail },
 ];
 
 const FooterHeading = ({ children }) => <h4 className="mb-4 text-lg font-semibold text-white">{children}</h4>;
@@ -39,7 +20,7 @@ const FooterHeading = ({ children }) => <h4 className="mb-4 text-lg font-semibol
 const Footer = () => {
   const { t } = useLanguage();
   const { footer } = t;
-  const contactItems = [{ icon: FaMapMarkerAlt, text: t.profile.location }, ...contactLines];
+  const contactItems = [{ icon: LuMapPin, text: t.profile.location }, ...contactLines];
 
   return (
     <footer className="bg-slate-800 pt-15 pb-5 text-slate-400 dark:border-t dark:border-slate-800 dark:bg-slate-950">
@@ -54,17 +35,14 @@ const Footer = () => {
           <div>
             <FooterHeading>{footer.quickLinks}</FooterHeading>
             <ul className="space-y-2.5">
-              {navigation.map(({ id }) => {
-                const Icon = QUICK_LINK_ICONS[id];
-                return (
-                  <li key={id}>
-                    <a href={`#${id}`} className="flex items-center gap-2 transition hover:text-blue-400">
-                      <Icon className="text-blue-500" aria-hidden="true" />
-                      {t.nav[id]}
-                    </a>
-                  </li>
-                );
-              })}
+              {navigation.map(({ id, icon: Icon }) => (
+                <li key={id}>
+                  <a href={`#${id}`} className="flex items-center gap-2 transition hover:text-blue-400">
+                    <Icon className="text-blue-500" aria-hidden="true" />
+                    {t.nav[id]}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

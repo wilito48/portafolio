@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>Página no encontrada — Kervyn Rojas</title>
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+          var lang = localStorage.getItem('lang') || (navigator.language.startsWith('es') ? 'es' : 'en');
+          document.documentElement.setAttribute('lang', lang);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>Página no encontrada. <a href="/">Volver al inicio</a>.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/not-found.jsx"></script>
+  </body>
+</html>

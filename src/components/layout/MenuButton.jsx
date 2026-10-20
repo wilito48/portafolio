@@ -6,7 +6,7 @@ const MenuButton = ({ isOpen, onToggle, labels }) => (
     onClick={onToggle}
     aria-label={isOpen ? labels.close : labels.open}
     aria-expanded={isOpen}
-    className={`cursor-pointer rounded-lg p-2.5 transition hover:bg-blue-600/10 hover:text-primary lg:hidden ${
+    className={`cursor-pointer rounded-lg p-2 transition hover:bg-blue-600/10 hover:text-primary sm:p-2.5 lg:hidden ${
       isOpen ? 'text-primary' : 'text-ink'
     }`}
   >

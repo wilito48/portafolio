@@ -12,6 +12,10 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     rolldownOptions: {
+      input: {
+        main: 'index.html',
+        notFound: '404.html',
+      },
       output: {
         advancedChunks: {
           groups: Object.entries(VENDOR_CHUNKS).map(([name, test]) => ({ name, test })),

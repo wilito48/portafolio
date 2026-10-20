@@ -1,11 +1,9 @@
-import { FaDatabase, FaLayerGroup, FaServer, FaTools } from 'react-icons/fa';
-import spanishFlag from '../assets/icons/flags/es.png';
-import englishFlag from '../assets/icons/flags/en.png';
+import { LuDatabase, LuLayers, LuServer, LuWrench } from 'react-icons/lu';
 
 export const skillCategories = [
   {
     id: 'backend',
-    icon: FaServer,
+    icon: LuServer,
     skills: [
       'Node.js',
       'TypeScript',
@@ -22,22 +20,22 @@ export const skillCategories = [
   },
   {
     id: 'frontend',
-    icon: FaLayerGroup,
+    icon: LuLayers,
     skills: ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'React Native (Expo)', 'Flutter'],
   },
   {
     id: 'data',
-    icon: FaDatabase,
+    icon: LuDatabase,
     skills: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'LangChain', 'OpenAI API'],
   },
   {
     id: 'devops',
-    icon: FaTools,
+    icon: LuWrench,
     skills: ['Jest', 'JUnit', 'Git', 'GitHub Actions', 'Docker', 'Linux', 'Nginx'],
   },
 ];
 
 export const languages = [
-  { id: 'es', tone: 'native', flag: spanishFlag },
-  { id: 'en', tone: 'learning', flag: englishFlag },
+  { id: 'es', tone: 'native' },
+  { id: 'en', tone: 'learning' },
 ];

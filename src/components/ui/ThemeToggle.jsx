@@ -14,7 +14,7 @@ const ThemeToggle = () => {
         toggleTheme({ x: left + width / 2, y: top + height / 2 });
       }}
       aria-label={isDarkMode ? t.ui.themeToLight : t.ui.themeToDark}
-      className="group flex cursor-pointer items-center justify-center rounded-full p-2 transition hover:bg-blue-500/10"
+      className="group flex cursor-pointer items-center justify-center rounded-full p-1 transition hover:bg-blue-500/10 sm:p-2"
     >
       <span className="relative block h-[26px] w-[50px] rounded-full border-2 border-line bg-surface-muted">
         <span

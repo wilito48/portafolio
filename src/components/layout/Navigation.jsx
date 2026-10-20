@@ -18,12 +18,9 @@ const NavLink = ({ item, label, isActive, onSelect }) => (
           : 'font-medium text-ink-muted hover:bg-blue-600/10 hover:text-primary'
       }`}
     >
-      <img
-        src={item.icon}
-        alt=""
-        className={`size-[18px] object-contain transition-transform duration-300 group-hover:scale-110 ${
-          item.invertOnDark ? 'dark:invert' : 'dark:brightness-90'
-        } ${isActive ? 'scale-110' : ''}`}
+      <item.icon
+        aria-hidden="true"
+        className={`size-[18px] shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? 'scale-110' : ''}`}
       />
       <span>{label}</span>
     </button>

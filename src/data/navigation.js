@@ -1,13 +1,9 @@
-import homeIcon from '../assets/icons/nav/home.png';
-import aboutIcon from '../assets/icons/nav/about.png';
-import skillsIcon from '../assets/icons/nav/skills.png';
-import projectsIcon from '../assets/icons/nav/projects.png';
-import contactIcon from '../assets/icons/contact/email.png';
+import { LuCodeXml, LuFolderOpen, LuHouse, LuMail, LuUser } from 'react-icons/lu';
 
 export const navigation = [
-  { id: 'home', icon: homeIcon },
-  { id: 'about', icon: aboutIcon },
-  { id: 'skills', icon: skillsIcon, invertOnDark: true },
-  { id: 'projects', icon: projectsIcon },
-  { id: 'contact', icon: contactIcon },
+  { id: 'home', icon: LuHouse },
+  { id: 'about', icon: LuUser },
+  { id: 'skills', icon: LuCodeXml },
+  { id: 'projects', icon: LuFolderOpen },
+  { id: 'contact', icon: LuMail },
 ];

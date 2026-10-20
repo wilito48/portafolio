@@ -100,6 +100,7 @@ const en = {
       curious: { title: 'Curious', text: 'Constant interest in new technologies, AI and best practices' },
       dedicated: { title: 'Dedicated', text: 'Committed to every delivery, from development to production' },
     },
+    traitsTitle: 'How I work',
     educationTitle: 'Education',
     education: {
       degree: 'Computer Systems Engineering',
@@ -297,6 +298,14 @@ const en = {
       email: 'Send an email',
       call: 'Call',
     },
+  },
+  notFound: {
+    metaTitle: 'Page not found — Kervyn Rojas',
+    eyebrow: 'Error 404',
+    title: "This page doesn't exist",
+    text: 'The link may be mistyped or the page may have moved. Let’s get you back on track.',
+    home: 'Back to home',
+    projects: 'View projects',
   },
   footer: {
     quickLinks: 'Quick Links',

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FaCheckCircle, FaEnvelope, FaGlobe, FaPaperPlane, FaUser } from 'react-icons/fa';
+import { LuCircleCheck, LuMail, LuMessageSquareText, LuSend, LuTag, LuUser } from 'react-icons/lu';
+import IconTile from '../ui/IconTile';
 import Button from '../ui/Button';
 import { GLASS_CARD } from './styles';
 import { profile } from '../../data/profile';
@@ -12,10 +13,10 @@ const FIELD_CLASSES =
   'w-full rounded-xl border-2 border-gray-200 bg-white/80 p-4 text-base text-ink transition-all placeholder:text-slate-400 focus:-translate-y-px focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] focus:outline-none dark:border-slate-600 dark:bg-slate-700/80';
 
 const fields = [
-  { name: 'name', type: 'text', icon: FaUser },
-  { name: 'email', type: 'email', icon: FaEnvelope },
-  { name: 'subject', type: 'text', icon: FaGlobe },
-  { name: 'message', multiline: true, icon: FaPaperPlane },
+  { name: 'name', type: 'text', icon: LuUser },
+  { name: 'email', type: 'email', icon: LuMail },
+  { name: 'subject', type: 'text', icon: LuTag },
+  { name: 'message', multiline: true, icon: LuMessageSquareText },
 ];
 
 const buildMailto = ({ name, email, subject, message }) => {
@@ -48,7 +49,7 @@ const ContactForm = () => {
   return (
     <div data-reveal className={GLASS_CARD}>
       <div className="mb-8 flex items-center gap-4">
-        <FaPaperPlane className="text-2xl text-emerald-500" aria-hidden="true" />
+        <IconTile icon={LuSend} />
         <h3 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">{form.title}</h3>
       </div>
 
@@ -84,7 +85,7 @@ const ContactForm = () => {
         })}
 
         <Button type="submit" className="w-full">
-          <FaPaperPlane aria-hidden="true" />
+          <LuSend aria-hidden="true" />
           {form.submit}
         </Button>
       </form>
@@ -94,7 +95,7 @@ const ContactForm = () => {
           role="status"
           className="mt-6 flex items-center gap-4 rounded-xl bg-[linear-gradient(135deg,#10b981,#059669)] p-6 text-white shadow-[0_8px_20px_rgba(16,185,129,0.3)]"
         >
-          <FaCheckCircle className="shrink-0 text-2xl" aria-hidden="true" />
+          <LuCircleCheck className="shrink-0 text-2xl" aria-hidden="true" />
           <div>
             <h4 className="mb-1 text-lg font-semibold">{form.sentTitle}</h4>
             <p className="opacity-90">{form.sentText}</p>

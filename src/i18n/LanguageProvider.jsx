@@ -17,15 +17,17 @@ const persistLanguage = (lang) => {
   }
 };
 
-export const LanguageProvider = ({ children }) => {
+const defaultTitle = (t) => t.meta.title;
+
+export const LanguageProvider = ({ children, getTitle = defaultTitle }) => {
   const [lang, setLang] = useState(getInitialLanguage);
   const t = locales[lang];
 
   useEffect(() => {
     document.documentElement.setAttribute('lang', lang);
-    document.title = t.meta.title;
+    document.title = getTitle(t);
     persistLanguage(lang);
-  }, [lang, t]);
+  }, [lang, t, getTitle]);
 
   const toggleLanguage = useCallback(() => setLang((current) => (current === 'es' ? 'en' : 'es')), []);
   const value = useMemo(() => ({ lang, t, toggleLanguage }), [lang, t, toggleLanguage]);

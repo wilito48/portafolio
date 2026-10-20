@@ -41,10 +41,13 @@ const Header = () => {
           : 'bg-white/95 dark:bg-slate-900/95'
       }`}
     >
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-4 md:px-8">
-        <a href="#home" className="group flex items-center gap-2.5 text-xl font-bold text-ink sm:text-2xl">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-2 px-4 py-4 sm:gap-4 md:px-8">
+        <a
+          href="#home"
+          className="group flex items-center gap-2 text-lg font-bold whitespace-nowrap text-ink sm:gap-2.5 sm:text-2xl"
+        >
           <Logo className="size-9 text-sm transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-6 sm:size-10 sm:text-base" />
-          {profile.shortName}
+          <span className="max-[369px]:sr-only">{profile.shortName}</span>
         </a>
 
         <div className="flex items-center gap-1 lg:gap-3">

@@ -1,20 +1,23 @@
-import { FaShieldAlt } from 'react-icons/fa';
-import organizedIcon from '../assets/icons/about/organized.png';
-import proactiveIcon from '../assets/icons/about/proactive.png';
-import creativeIcon from '../assets/icons/about/creative.png';
-import curiousIcon from '../assets/icons/about/curious.png';
-import awardIcon from '../assets/icons/about/award.png';
-import certificateIcon from '../assets/icons/about/certificate.png';
-import graduationIcon from '../assets/icons/about/graduation.png';
-import universityIcon from '../assets/icons/about/university.png';
+import {
+  LuAward,
+  LuBriefcase,
+  LuCompass,
+  LuGraduationCap,
+  LuLightbulb,
+  LuListChecks,
+  LuRocket,
+  LuSchool,
+  LuShieldCheck,
+  LuTrophy,
+} from 'react-icons/lu';
 import { projects } from './projects';
 
 export const sectionIcons = {
-  education: graduationIcon,
-  certifications: certificateIcon,
-  certification: awardIcon,
-  experience: awardIcon,
-  university: universityIcon,
+  education: LuGraduationCap,
+  certifications: LuAward,
+  certification: LuShieldCheck,
+  experience: LuBriefcase,
+  university: LuSchool,
 };
 
 export const stats = [
@@ -25,18 +28,18 @@ export const stats = [
 ];
 
 export const traits = [
-  { id: 'organized', icon: organizedIcon },
-  { id: 'proactive', icon: proactiveIcon },
-  { id: 'security', icon: FaShieldAlt },
-  { id: 'creative', icon: creativeIcon },
-  { id: 'curious', icon: curiousIcon },
-  { id: 'dedicated', icon: awardIcon },
+  { id: 'organized', icon: LuListChecks },
+  { id: 'proactive', icon: LuRocket },
+  { id: 'security', icon: LuShieldCheck },
+  { id: 'creative', icon: LuLightbulb },
+  { id: 'curious', icon: LuCompass },
+  { id: 'dedicated', icon: LuTrophy },
 ];
 
 export const certifications = ['cybersoc', 'ethicalHacking', 'offensiveDefensive', 'fundamentals'];
 
 export const experience = [
-  { id: 'starsoft', company: 'STARSOFT', icon: proactiveIcon },
-  { id: 'atp', company: 'Asociación Tecnológica del Perú', icon: creativeIcon },
-  { id: 'upn', company: 'Universidad Privada del Norte', icon: graduationIcon },
+  { id: 'starsoft', company: 'STARSOFT', icon: LuRocket },
+  { id: 'atp', company: 'Asociación Tecnológica del Perú', icon: LuShieldCheck },
+  { id: 'upn', company: 'Universidad Privada del Norte', icon: LuGraduationCap },
 ];

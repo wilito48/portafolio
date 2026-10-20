@@ -23,7 +23,7 @@ const LanguageToggle = () => {
         <span
           key={code}
           aria-hidden="true"
-          className={`relative z-10 w-8 text-center uppercase transition-colors duration-300 ${
+          className={`relative z-10 w-7 text-center uppercase transition-colors duration-300 sm:w-8 ${
             code === lang ? 'text-white' : 'text-ink-muted'
           }`}
         >
