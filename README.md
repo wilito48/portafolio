@@ -1,34 +1,83 @@
-# 🚀 Portafolio Profesional
+# Portafolio — Kervyn Willy Rojas Poma
 
-Portafolio personal que muestra mis proyectos y habilidades como desarrollador. Desarrollado con React, este sitio presenta mi trabajo de manera clara y profesional.
+Portafolio personal construido con React, Vite, Tailwind CSS v4 y GSAP. Se despliega en Vercel.
 
-## 🛠️ Tecnologías
-
-- React 19
-- JavaScript ES6+
-- CSS3 (Grid, Flexbox, Variables CSS)
-- HTML5 Semántico
-
-## � Instalación
+## Desarrollo
 
 ```bash
-# Clonar el repositorio
-git clone [url-del-repositorio]
-
-# Instalar dependencias
 npm install
-
-# Iniciar servidor de desarrollo
-npm start
+npm run dev
+npm run build
+npm run lint
+npm run format
 ```
 
-## 🌐 Despliegue
+## Estructura
 
-El sitio está desplegado en Vercel:
-[Ver en Vivo](https://tudominio.vercel.app)
+```
+src/
+├── main.jsx              Punto de entrada
+├── App.jsx               Composición de secciones
+├── index.css             Tailwind: tokens de color, temas claro/oscuro y utilidades
+├── data/                 Contenido del sitio (sin JSX)
+│   ├── profile.js        Nombre, rol, contacto, redes y CV
+│   ├── about.js          Historia, cifras, experiencia, formación y certificaciones
+│   ├── skills.js         Habilidades por categoría e idiomas
+│   ├── techIcons.js      Logos SVG y color de cada tecnología
+│   ├── projects.js       Proyectos y sus capturas
+│   ├── contact.js        Canales de contacto
+│   └── navigation.js     Secciones del menú
+├── components/
+│   ├── layout/           Header y Footer
+│   ├── sections/         Hero, About, Skills, Projects y Contact
+│   ├── projects/         Tarjeta, galería, marcos de dispositivo y visor
+│   ├── contact/          Formulario y tarjeta de llamada a la acción
+│   └── ui/               Button, IconButton, SectionHeader, TechIcon, ThemeToggle…
+├── hooks/                Scroll, sección activa, tema y animaciones de entrada
+├── context/              Proveedor de tema
+├── lib/gsap.js           Registro de GSAP y ScrollTrigger
+└── assets/
+    ├── images/           Foto de perfil
+    └── icons/            Íconos decorativos (nav, contact, about, flags)
+```
 
-## 📞 Contacto
+Para cambiar textos o datos basta con editar `src/data/`. El CV descargable está en `public/cv-kervyn-rojas.pdf`.
 
-- 📧 Email: willykervyn@gmail.com
-- 💼 LinkedIn: [linkedin.com/in/kervyn-willy-rojas-poma-3b7094310/](https://www.linkedin.com/in/kervyn-willy-rojas-poma-3b7094310/)
-- 💻 GitHub: [github.com/wilito48](https://github.com/wilito48)
+## Agregar capturas a un proyecto
+
+1. Copia las imágenes en `public/images/proyectos/<slug>/`.
+2. Añádelas al arreglo `images` del proyecto en `src/data/projects.js`:
+
+```js
+images: [
+  { file: 'inicio.jpg', alt: 'Página de inicio' },
+  { file: 'catalogo.jpg', alt: 'Catálogo' },
+  { file: 'inicio-movil.jpg', alt: 'Inicio en móvil', device: 'phone' },
+],
+```
+
+- `device: 'screen'` muestra la captura en una ventana de navegador; `device: 'phone'`, en un teléfono.
+- Si no se indica, los proyectos `mobile` usan `phone` y el resto `screen`.
+- Un proyecto web puede mezclar ambos: el primer teléfono aparece superpuesto a la ventana.
+- Todas las capturas se abren a pantalla completa (flechas del teclado o deslizar en móvil).
+
+Tamaños recomendados: web ~1600×1000 y móvil ~1080×2340, en `.jpg` o `.webp` de menos de 400 KB.
+
+## Animaciones (GSAP)
+
+| Dónde             | Qué hace                                                                                                         | Archivo                                                 |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Todo el sitio     | Elementos con `data-reveal` aparecen al entrar en pantalla                                                       | `hooks/useScrollReveal.js`                              |
+| Inicio            | Entrada escalonada, subtítulo letra por letra (SplitText), parallax y botones magnéticos                         | `sections/Hero.jsx`, `ui/Magnetic.jsx`                  |
+| Foto de perfil    | Órbita de integraciones (WhatsApp, Instagram, Messenger, Facebook, TikTok) que gira y se frena al pasar el mouse | `hero/ProfileOrbit.jsx`, `data/integrations.js`         |
+| Sobre mí          | Línea de experiencia que se dibuja con el scroll y cifras que cuentan                                            | `about/ExperienceTimeline.jsx`, `about/StatCounter.jsx` |
+| Proyectos         | Transición Flip al filtrar y deslizamiento entre capturas                                                        | `sections/Projects.jsx`, `projects/ProjectMedia.jsx`    |
+| Header            | Barra de progreso de lectura; se oculta al bajar y reaparece al subir                                            | `layout/ScrollProgress.jsx`, `hooks/useHideOnScroll.js` |
+| Menú              | Indicador que se desliza a la sección activa y enlaces en cascada en móvil                                       | `layout/Navigation.jsx`, `layout/MenuButton.jsx`        |
+| Habilidades       | Logos que aparecen en cascada desde el centro                                                                    | `sections/Skills.jsx`                                   |
+| Visor             | Las capturas se abren con zoom desde su miniatura y vuelven a ella al cerrar                                     | `projects/Lightbox.jsx`                                 |
+| Inicio → Sobre mí | Cinta infinita de tecnologías que acelera y cambia de dirección con el scroll                                    | `sections/TechMarquee.jsx`                              |
+| Mi historia       | Las palabras pasan de tenues a nítidas mientras haces scroll                                                     | `about/StoryText.jsx`                                   |
+| Proyectos (3D)    | Los mockups entran inclinados en perspectiva y se enderezan con el scroll                                        | `projects/ScrollTilt.jsx`                               |
+
+Todas se desactivan si el sistema pide reducir movimiento, y el efecto magnético solo se activa con mouse.
