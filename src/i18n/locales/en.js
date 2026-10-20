@@ -11,7 +11,7 @@ const en = {
     closeMenu: 'Close menu',
     mainNav: 'Main',
     backToTop: 'Back to top',
-    downloadCv: 'Download CV',
+    downloadCv: 'Download Resume',
   },
   nav: {
     home: 'Home',
@@ -44,7 +44,7 @@ const en = {
     subtitle: 'My background, experience and education',
     storyTitle: 'My Story',
     story: [
-      "I'm a Junior Full Stack Developer and a final-year Computer Systems Engineering student at Universidad Privada del Norte in Lima, Peru.",
+      "I'm a Junior Full Stack Developer and a final-semester Computer Systems Engineering student at Universidad Privada del Norte in Lima, Peru.",
       'At STARSOFT I worked on the backend, web app and mobile app of two multi-tenant SaaS CRMs in production, including Meta, TikTok and Mailchimp integrations, Culqi subscriptions, multi-tenant security and Redis caching.',
       'Before that, at Asociación Tecnológica del Perú, I audited the security of their web platform, integrated login and sign-up through APIs and automated marketing content with AI. I want to keep building real products alongside a great team.',
     ],
@@ -57,7 +57,7 @@ const en = {
     experienceTitle: 'Experience',
     experience: {
       starsoft: {
-        role: 'Software Development Intern',
+        role: 'Programming Intern',
         period: 'Jun 2026 - Sep 2026',
         description:
           'STARSOFT CRM and Abatar CRM (abatarcrm.com): backend, web and mobile app of two multi-tenant SaaS CRMs in production.',
@@ -86,8 +86,8 @@ const en = {
       },
       upn: {
         role: 'Computer Systems Engineering',
-        period: 'Final year',
-        description: 'Final-year student focused on software development and cybersecurity.',
+        period: 'Final semester',
+        description: 'Final-semester student focused on software development and cybersecurity.',
         stack: [],
         highlights: [],
       },
@@ -104,7 +104,7 @@ const en = {
     education: {
       degree: 'Computer Systems Engineering',
       institution: 'Universidad Privada del Norte – Lima, Peru',
-      detail: 'Final year',
+      detail: 'Final semester',
       status: 'In progress',
     },
     certificationsTitle: 'Certifications',

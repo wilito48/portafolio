@@ -21,7 +21,7 @@ export const profile = {
   mapsUrl: 'https://maps.google.com/?q=Lima,Peru',
   photo,
   cv: {
-    path: '/cv-kervyn-rojas.pdf',
-    fileName: 'CV-Kervyn-Rojas-Poma.pdf',
+    es: { path: '/cv-kervyn-rojas.pdf', fileName: 'CV-Kervyn-Rojas-Poma.pdf' },
+    en: { path: '/cv-kervyn-rojas-en.pdf', fileName: 'Resume-Kervyn-Rojas-Poma.pdf' },
   },
 };

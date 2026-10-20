@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import LanguageToggle from '../ui/LanguageToggle';
+import Logo from '../ui/Logo';
 import ThemeToggle from '../ui/ThemeToggle';
 import MenuButton from './MenuButton';
 import Navigation from './Navigation';
@@ -41,10 +42,8 @@ const Header = () => {
       }`}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-4 md:px-8">
-        <a href="#home" className="flex items-center gap-2.5 text-xl font-bold text-ink sm:text-2xl">
-          <span className="text-2xl sm:text-[2rem]" aria-hidden="true">
-            💻
-          </span>
+        <a href="#home" className="group flex items-center gap-2.5 text-xl font-bold text-ink sm:text-2xl">
+          <Logo className="size-9 text-sm transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-6 sm:size-10 sm:text-base" />
           {profile.shortName}
         </a>
 

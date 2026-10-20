@@ -57,7 +57,7 @@ Los datos neutros (íconos, enlaces, tecnologías, imágenes) viven en `src/data
 
 `public/og-image.png` (1200×630) es la imagen que aparece al compartir el enlace en LinkedIn, WhatsApp o X.
 Las etiquetas están en `index.html` y usan el dominio `portafolio-sigma-fawn.vercel.app`; si cambias de dominio,
-actualiza esas URLs. El CV descargable está en `public/cv-kervyn-rojas.pdf`.
+actualiza esas URLs. Los CV descargables están en `public/cv-kervyn-rojas.pdf` (español) y `public/cv-kervyn-rojas-en.pdf` (inglés); el botón elige el del idioma activo.
 
 ## Agregar capturas a un proyecto
 
