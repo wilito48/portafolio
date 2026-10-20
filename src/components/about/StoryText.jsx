@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { gsap, MOTION_OK, SplitText, useGSAP } from '../../lib/gsap';
 
-const DIMMED = 0.15;
+const DIMMED = 0.2;
 
 const StoryText = ({ paragraphs }) => {
   const scopeRef = useRef(null);
@@ -9,7 +9,7 @@ const StoryText = ({ paragraphs }) => {
   useGSAP(
     () => {
       gsap.matchMedia().add(MOTION_OK, () => {
-        const split = SplitText.create(scopeRef.current.querySelectorAll('p'), { type: 'words' });
+        const split = SplitText.create(scopeRef.current.querySelectorAll('p'), { type: 'words', aria: 'none' });
         gsap.set(split.words, { opacity: DIMMED });
         gsap.to(split.words, {
           opacity: 1,

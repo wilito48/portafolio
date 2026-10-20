@@ -22,7 +22,7 @@ const Hero = () => {
 
         gsap
           .timeline({ defaults: { ease: 'power3.out', duration: 0.9 } })
-          .from('[data-hero-item]', { autoAlpha: 0, y: 30, stagger: 0.12 })
+          .from('[data-hero-item]', { autoAlpha: 0, y: 30, stagger: 0.07, duration: 0.7 })
           .from(role.chars, { yPercent: 110, duration: 0.6, stagger: 0.02 }, 0.3)
           .from(
             '[data-hero-chip]',

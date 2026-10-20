@@ -97,3 +97,12 @@ Tamaños recomendados: web ~1600×1000 y móvil ~1080×2340, en `.jpg` o `.webp`
 | Proyectos (3D)    | Los mockups entran inclinados en perspectiva y se enderezan con el scroll                                        | `projects/ScrollTilt.jsx`                               |
 
 Todas se desactivan si el sistema pide reducir movimiento, y el efecto magnético solo se activa con mouse.
+
+## Analítica, SEO e íconos
+
+- **Vercel Analytics y Speed Insights** (`src/App.jsx`): visitas y velocidad real. Se activan en el panel de Vercel, en
+  las pestañas _Analytics_ y _Speed Insights_ del proyecto.
+- **SEO**: `public/robots.txt`, `public/sitemap.xml` y datos estructurados de tipo `Person` en `index.html`.
+- **Íconos**: `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `logo192.png`, `logo512.png` y `logo-maskable.png`
+  en `public/`.
+- **Fuente**: Inter se sirve desde `public/fonts/` (sin depender de Google Fonts) y se precarga en `index.html`.

@@ -1,4 +1,6 @@
 import { useRef } from 'react';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ThemeProvider } from './context/ThemeProvider';
 import { LanguageProvider } from './i18n/LanguageProvider';
 import { useScrollReveal } from './hooks/useScrollReveal';
@@ -32,6 +34,8 @@ const App = () => {
         </main>
         <Footer />
         <BackToTop />
+        <Analytics />
+        <SpeedInsights />
       </LanguageProvider>
     </ThemeProvider>
   );
