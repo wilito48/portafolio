@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { FiArrowLeft, FiArrowRight, FiMaximize2 } from 'react-icons/fi';
 import IconButton from '../ui/IconButton';
 import { PhoneFrame, ScreenFrame } from './DeviceFrame';
+import HoverTilt from './HoverTilt';
 import ScrollTilt from './ScrollTilt';
 import Shot from './Shot';
 import { CATEGORIES } from '../../data/projects';
@@ -92,23 +93,25 @@ const ScreenGallery = ({ project, screens, phone, onOpen }) => {
     <div className="flex flex-col gap-3">
       <div className={STAGE}>
         <ScrollTilt>
-          <div ref={stageRef} className={`relative ${phone ? 'mr-[14%]' : ''}`}>
-            <ScreenFrame label={frameLabel(project)}>
-              <div key={current?.src} data-gallery-shot className="size-full">
-                <Shot image={current} title={project.title} />
-              </div>
-            </ScreenFrame>
-            {current && <ZoomButton image={current} onOpen={onOpen} />}
-          </div>
-
-          {phone && (
-            <div className="absolute right-0 bottom-0 w-[21%] min-w-[70px]">
-              <PhoneFrame>
-                <Shot image={phone} title={project.title} />
-              </PhoneFrame>
-              <ZoomButton image={phone} onOpen={onOpen} onPhone />
+          <HoverTilt>
+            <div ref={stageRef} className={`relative ${phone ? 'mr-[14%]' : ''}`}>
+              <ScreenFrame label={frameLabel(project)}>
+                <div key={current?.src} data-gallery-shot className="size-full">
+                  <Shot image={current} title={project.title} />
+                </div>
+              </ScreenFrame>
+              {current && <ZoomButton image={current} onOpen={onOpen} />}
             </div>
-          )}
+
+            {phone && (
+              <div className="absolute right-0 bottom-0 w-[21%] min-w-[70px]">
+                <PhoneFrame>
+                  <Shot image={phone} title={project.title} />
+                </PhoneFrame>
+                <ZoomButton image={phone} onOpen={onOpen} onPhone />
+              </div>
+            )}
+          </HoverTilt>
         </ScrollTilt>
       </div>
 

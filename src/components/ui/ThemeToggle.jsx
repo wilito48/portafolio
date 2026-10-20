@@ -9,7 +9,10 @@ const ThemeToggle = () => {
   return (
     <button
       type="button"
-      onClick={toggleTheme}
+      onClick={(event) => {
+        const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
+        toggleTheme({ x: left + width / 2, y: top + height / 2 });
+      }}
       aria-label={isDarkMode ? t.ui.themeToLight : t.ui.themeToDark}
       className="group flex cursor-pointer items-center justify-center rounded-full p-2 transition hover:bg-blue-500/10"
     >

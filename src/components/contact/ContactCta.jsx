@@ -1,18 +1,32 @@
+import { useRef } from 'react';
 import { FaArrowRight, FaEnvelope, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 import { profile } from '../../data/profile';
 import { useLanguage } from '../../hooks/useLanguage';
+import { usePointerPosition } from '../../hooks/usePointerPosition';
 
 const GHOST_ACTION =
   'flex items-center justify-center gap-3 rounded-[14px] border border-white/14 bg-white/6 px-4 py-3.5 font-semibold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/12 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-violet-400';
 
 const ContactCta = () => {
+  const cardRef = useRef(null);
   const { t } = useLanguage();
   const { cta } = t.contact;
+  usePointerPosition(cardRef);
+
   return (
     <div
+      ref={cardRef}
       data-reveal
-      className="relative isolate grid items-center gap-8 overflow-hidden rounded-[20px] border border-slate-400/16 bg-slate-950 p-6 text-slate-50 shadow-[0_30px_60px_-25px_rgba(15,23,42,0.55)] before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(520px_circle_at_0%_0%,rgba(59,130,246,0.35),transparent_60%),radial-gradient(420px_circle_at_100%_100%,rgba(139,92,246,0.32),transparent_60%),radial-gradient(300px_circle_at_75%_0%,rgba(236,72,153,0.18),transparent_60%)] after:absolute after:inset-0 after:-z-10 after:bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] after:[mask-image:radial-gradient(ellipse_at_30%_40%,#000_20%,transparent_75%)] after:bg-size-[32px_32px] sm:p-9 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-12 lg:rounded-3xl lg:p-13 dark:border-slate-400/22"
+      className="group/cta relative isolate grid items-center gap-8 overflow-hidden rounded-[20px] border border-slate-400/16 bg-slate-950 p-6 text-slate-50 shadow-[0_30px_60px_-25px_rgba(15,23,42,0.55)] before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(520px_circle_at_0%_0%,rgba(59,130,246,0.35),transparent_60%),radial-gradient(420px_circle_at_100%_100%,rgba(139,92,246,0.32),transparent_60%),radial-gradient(300px_circle_at_75%_0%,rgba(236,72,153,0.18),transparent_60%)] after:absolute after:inset-0 after:-z-10 after:bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] after:[mask-image:radial-gradient(ellipse_at_30%_40%,#000_20%,transparent_75%)] after:bg-size-[32px_32px] sm:p-9 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-12 lg:rounded-3xl lg:p-13 dark:border-slate-400/22"
     >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(380px_circle_at_var(--pointer-x,50%)_var(--pointer-y,50%),rgba(167,139,250,0.3),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover/cta:opacity-100"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] mask-[radial-gradient(220px_circle_at_var(--pointer-x,50%)_var(--pointer-y,50%),#000,transparent_70%)] bg-size-[32px_32px] opacity-0 transition-opacity duration-500 group-hover/cta:opacity-100"
+      />
       <div>
         <span className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3.5 py-1.5 text-sm font-semibold text-emerald-300">
           <span className="relative size-2 rounded-full bg-emerald-400 after:absolute after:inset-0 after:animate-ping-soft after:rounded-full after:bg-emerald-400" />

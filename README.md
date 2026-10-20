@@ -96,6 +96,9 @@ Tamaños recomendados: web ~1600×1000 y móvil ~1080×2340, en `.jpg` o `.webp`
 | Mi historia          | Las palabras pasan de tenues a nítidas mientras haces scroll                                                                   | `about/StoryText.jsx`                                   |
 | Proyectos (3D)       | Los mockups entran inclinados en perspectiva y se enderezan con el scroll                                                      | `projects/ScrollTilt.jsx`                               |
 | Proyectos destacados | En escritorio (≥1024 px de ancho y ≥820 px de alto) las 4 tarjetas con `featured: true` se apilan como un mazo al hacer scroll | `projects/ProjectStack.jsx`                             |
+| Tema                 | Al cambiar de tema, el nuevo se expande en círculo desde el botón (View Transitions API)                                       | `context/ThemeProvider.jsx`                             |
+| Contacto             | Brillo y cuadrícula iluminada que siguen al mouse en la tarjeta final                                                          | `contact/ContactCta.jsx`, `hooks/usePointerPosition.js` |
+| Proyectos (mouse)    | Los mockups se inclinan en 3D hacia el cursor con un reflejo de luz                                                            | `projects/HoverTilt.jsx`                                |
 
 Todas se desactivan si el sistema pide reducir movimiento, y el efecto magnético solo se activa con mouse.
 
