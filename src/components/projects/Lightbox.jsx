@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { FiArrowLeft, FiArrowRight, FiX } from 'react-icons/fi';
 import IconButton from '../ui/IconButton';
+import { useLanguage } from '../../hooks/useLanguage';
 import { gsap, MOTION_OK, useGSAP } from '../../lib/gsap';
 
 const SWIPE_THRESHOLD = 50;
@@ -32,6 +33,7 @@ const Lightbox = ({ title, images, startIndex, source, onClose }) => {
   const isClosing = useRef(false);
   const shownIndex = useRef(startIndex);
   const [index, setIndex] = useState(startIndex);
+  const { t } = useLanguage();
   const count = images.length;
   const image = images[index];
 
@@ -111,7 +113,7 @@ const Lightbox = ({ title, images, startIndex, source, onClose }) => {
   return (
     <dialog
       ref={dialogRef}
-      aria-label={`Capturas de ${title}`}
+      aria-label={t.lightbox.label(title)}
       onClose={onClose}
       onCancel={(event) => {
         event.preventDefault();
@@ -127,7 +129,7 @@ const Lightbox = ({ title, images, startIndex, source, onClose }) => {
             {index + 1} / {count}
           </span>
         </p>
-        <IconButton label="Cerrar visor" onClick={requestClose} className={DARK_BUTTON}>
+        <IconButton label={t.lightbox.close} onClick={requestClose} className={DARK_BUTTON}>
           <FiX />
         </IconButton>
       </header>
@@ -152,14 +154,14 @@ const Lightbox = ({ title, images, startIndex, source, onClose }) => {
         {count > 1 && (
           <div data-lightbox-chrome>
             <IconButton
-              label="Captura anterior"
+              label={t.lightbox.previous}
               onClick={() => go(-1)}
               className={`absolute bottom-0 left-0 z-20 size-12 sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 ${DARK_BUTTON}`}
             >
               <FiArrowLeft />
             </IconButton>
             <IconButton
-              label="Captura siguiente"
+              label={t.lightbox.next}
               onClick={() => go(1)}
               className={`absolute right-0 bottom-0 z-20 size-12 sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 ${DARK_BUTTON}`}
             >
@@ -178,7 +180,7 @@ const Lightbox = ({ title, images, startIndex, source, onClose }) => {
                 key={thumb.src}
                 type="button"
                 onClick={() => setIndex(i)}
-                aria-label={`Ir a captura ${i + 1}`}
+                aria-label={t.lightbox.goTo(i + 1)}
                 aria-current={i === index}
                 className={`h-[52px] shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-[border-color,opacity] duration-300 ${
                   thumb.device === 'phone' ? 'aspect-[9/19.5]' : 'aspect-[16/10]'

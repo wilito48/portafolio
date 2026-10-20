@@ -7,10 +7,10 @@ import whatsappIcon from '../assets/icons/contact/whatsapp.png';
 import githubIcon from '../assets/icons/contact/github.png';
 
 export const contactChannels = [
-  { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, icon: emailIcon },
-  { label: 'WhatsApp', value: profile.phone.display, href: profile.whatsapp, icon: whatsappIcon, external: true },
+  { id: 'email', value: profile.email, href: `mailto:${profile.email}`, icon: emailIcon },
+  { id: 'whatsapp', value: profile.phone.display, href: profile.whatsapp, icon: whatsappIcon, external: true },
   {
-    label: 'LinkedIn',
+    id: 'linkedin',
     value: profile.linkedin.user,
     href: profile.linkedin.url,
     icon: FaLinkedin,
@@ -18,13 +18,13 @@ export const contactChannels = [
     external: true,
   },
   {
-    label: 'GitHub',
+    id: 'github',
     value: profile.github.user,
     href: profile.github.url,
     icon: githubIcon,
     invertOnDark: true,
     external: true,
   },
-  { label: 'Teléfono', value: profile.phone.display, href: profile.phone.href, icon: phoneIcon },
-  { label: 'Ubicación', value: profile.location, href: profile.mapsUrl, icon: locationIcon, external: true },
+  { id: 'phone', value: profile.phone.display, href: profile.phone.href, icon: phoneIcon },
+  { id: 'location', href: profile.mapsUrl, icon: locationIcon, external: true },
 ];

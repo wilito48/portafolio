@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { navigation } from '../../data/navigation';
+import { useLanguage } from '../../hooks/useLanguage';
 import { gsap, MOTION_OK, useGSAP } from '../../lib/gsap';
 
 const DESKTOP = '(min-width: 1024px)';
 const MOBILE_MOTION = `(max-width: 1023.98px) and ${MOTION_OK}`;
 
-const NavLink = ({ item, isActive, onSelect }) => (
+const NavLink = ({ item, label, isActive, onSelect }) => (
   <li className="relative z-10">
     <button
       type="button"
@@ -24,7 +25,7 @@ const NavLink = ({ item, isActive, onSelect }) => (
           item.invertOnDark ? 'dark:invert' : 'dark:brightness-90'
         } ${isActive ? 'scale-110' : ''}`}
       />
-      <span>{item.label}</span>
+      <span>{label}</span>
     </button>
   </li>
 );
@@ -46,9 +47,10 @@ const Navigation = ({ isOpen, activeId, onSelect }) => {
   const listRef = useRef(null);
   const pillRef = useRef(null);
   const placed = useRef(false);
+  const { t } = useLanguage();
 
   useGSAP(() => movePill({ list: listRef.current, pill: pillRef.current, placed }, true), {
-    dependencies: [activeId],
+    dependencies: [activeId, t],
     scope: listRef,
   });
 
@@ -75,7 +77,7 @@ const Navigation = ({ isOpen, activeId, onSelect }) => {
 
   return (
     <nav
-      aria-label="Principal"
+      aria-label={t.ui.mainNav}
       className={`absolute inset-x-0 top-full border-t border-line bg-surface shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-[opacity,translate,visibility] duration-300 lg:static lg:border-0 lg:bg-transparent lg:shadow-none ${
         isOpen
           ? 'visible translate-y-0 opacity-100'
@@ -89,7 +91,13 @@ const Navigation = ({ isOpen, activeId, onSelect }) => {
           className="invisible absolute inset-y-0 left-0 z-0 hidden rounded-lg bg-blue-600/15 lg:block"
         />
         {navigation.map((item) => (
-          <NavLink key={item.id} item={item} isActive={activeId === item.id} onSelect={onSelect} />
+          <NavLink
+            key={item.id}
+            item={item}
+            label={t.nav[item.id]}
+            isActive={activeId === item.id}
+            onSelect={onSelect}
+          />
         ))}
       </ul>
     </nav>

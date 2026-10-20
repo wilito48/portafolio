@@ -3,6 +3,7 @@ import { FaExternalLinkAlt, FaGithub, FaRocket } from 'react-icons/fa';
 import Button from '../ui/Button';
 import ProjectMedia from './ProjectMedia';
 import { CATEGORIES } from '../../data/projects';
+import { useLanguage } from '../../hooks/useLanguage';
 
 const VISIBLE_FEATURES = 4;
 
@@ -19,13 +20,14 @@ const Badge = ({ muted, children }) => (
 );
 
 const FeatureList = ({ features }) => {
+  const { t } = useLanguage();
   const [expanded, setExpanded] = useState(false);
   const hiddenCount = features.length - VISIBLE_FEATURES;
   const visible = expanded ? features : features.slice(0, VISIBLE_FEATURES);
 
   return (
     <div className="mb-7 rounded-[15px] border border-slate-200/70 bg-slate-50/80 p-5 dark:border-slate-400/20 dark:bg-slate-700/60">
-      <h4 className="mb-3.5 font-bold text-ink">✨ Características principales</h4>
+      <h4 className="mb-3.5 font-bold text-ink">✨ {t.projects.features}</h4>
       <ul className="grid gap-2.5">
         {visible.map((feature) => (
           <li key={feature} className="flex items-baseline gap-2.5 text-[0.93rem] text-slate-500 dark:text-slate-300">
@@ -43,7 +45,7 @@ const FeatureList = ({ features }) => {
           aria-expanded={expanded}
           className="mt-3 cursor-pointer text-sm font-semibold text-blue-500 hover:underline"
         >
-          {expanded ? 'Ver menos' : `Ver ${hiddenCount} más`}
+          {expanded ? t.projects.showLess : t.projects.showMore(hiddenCount)}
         </button>
       )}
     </div>
@@ -51,6 +53,7 @@ const FeatureList = ({ features }) => {
 };
 
 const ProjectCard = ({ project, reversed, onOpenImage }) => {
+  const { t } = useLanguage();
   const { title, description, technologies, features, demoLink, githubLink, category, icon, images } = project;
 
   return (
@@ -65,9 +68,9 @@ const ProjectCard = ({ project, reversed, onOpenImage }) => {
       <div className="flex min-w-0 flex-col px-1 pb-2 lg:self-stretch lg:py-2">
         <div className="mb-4 flex flex-wrap gap-2">
           <Badge>
-            {CATEGORIES[category].icon} {CATEGORIES[category].label}
+            {CATEGORIES[category].icon} {t.projects.categories[category]}
           </Badge>
-          {images.length > 1 && <Badge muted>{images.length} capturas</Badge>}
+          {images.length > 1 && <Badge muted>{t.projects.screenshotCount(images.length)}</Badge>}
         </div>
 
         <div className="mb-4 flex items-center gap-2.5">
@@ -79,7 +82,7 @@ const ProjectCard = ({ project, reversed, onOpenImage }) => {
 
         <p className="mb-6 leading-[1.7] text-slate-500 dark:text-slate-400">{description}</p>
 
-        <ul className="mb-6 flex flex-wrap gap-2" aria-label="Tecnologías">
+        <ul className="mb-6 flex flex-wrap gap-2" aria-label={t.projects.technologies}>
           {technologies.map((tech) => (
             <li
               key={tech}
@@ -97,14 +100,14 @@ const ProjectCard = ({ project, reversed, onOpenImage }) => {
             {demoLink && (
               <Button href={demoLink} className="min-w-[140px] flex-1 sm:flex-none">
                 <FaRocket aria-hidden="true" />
-                Ver Demo
+                {t.projects.demo}
                 <FaExternalLinkAlt className="text-[0.7rem] opacity-80" aria-hidden="true" />
               </Button>
             )}
             {githubLink && (
               <Button href={githubLink} variant="secondary" className="min-w-[140px] flex-1 sm:flex-none">
                 <FaGithub aria-hidden="true" />
-                Código
+                {t.projects.code}
                 <FaExternalLinkAlt className="text-[0.7rem] opacity-80" aria-hidden="true" />
               </Button>
             )}

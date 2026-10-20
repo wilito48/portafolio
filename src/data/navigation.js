@@ -5,9 +5,9 @@ import projectsIcon from '../assets/icons/nav/projects.png';
 import contactIcon from '../assets/icons/contact/email.png';
 
 export const navigation = [
-  { id: 'home', label: 'Inicio', icon: homeIcon },
-  { id: 'about', label: 'Sobre Mí', icon: aboutIcon },
-  { id: 'skills', label: 'Habilidades', icon: skillsIcon, invertOnDark: true },
-  { id: 'projects', label: 'Proyectos', icon: projectsIcon },
-  { id: 'contact', label: 'Contacto', icon: contactIcon },
+  { id: 'home', icon: homeIcon },
+  { id: 'about', icon: aboutIcon },
+  { id: 'skills', icon: skillsIcon, invertOnDark: true },
+  { id: 'projects', icon: projectsIcon },
+  { id: 'contact', icon: contactIcon },
 ];

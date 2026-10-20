@@ -1,14 +1,16 @@
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { useLanguage } from '../../hooks/useLanguage';
 import { useTheme } from '../../hooks/useTheme';
 
 const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+      aria-label={isDarkMode ? t.ui.themeToLight : t.ui.themeToDark}
       className="group flex cursor-pointer items-center justify-center rounded-full p-2 transition hover:bg-blue-500/10"
     >
       <span className="relative block h-[26px] w-[50px] rounded-full border-2 border-line bg-surface-muted">

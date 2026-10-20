@@ -4,6 +4,7 @@ import DownloadCV from '../ui/DownloadCV';
 import Magnetic from '../ui/Magnetic';
 import ProfileOrbit from '../hero/ProfileOrbit';
 import { profile } from '../../data/profile';
+import { useLanguage } from '../../hooks/useLanguage';
 import { gsap, MOTION_OK, SplitText, useGSAP } from '../../lib/gsap';
 
 const BUTTON_WIDTH = 'w-full max-w-[250px] sm:w-auto';
@@ -12,6 +13,7 @@ const PARALLAX = (trigger) => ({ trigger, start: 'top top', end: 'bottom top', s
 
 const Hero = () => {
   const scopeRef = useRef(null);
+  const { lang, t } = useLanguage();
 
   useGSAP(
     () => {
@@ -61,14 +63,14 @@ const Hero = () => {
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-300"
           >
             <span className="relative size-2 rounded-full bg-emerald-400 after:absolute after:inset-0 after:animate-ping-soft after:rounded-full after:bg-emerald-400" />
-            {profile.availability}
+            {t.profile.availability}
           </span>
 
           <h1
             data-hero-item
             className="mb-4 text-[2rem] leading-tight font-extrabold text-ink sm:text-[2.5rem] lg:text-5xl xl:text-[3.5rem]"
           >
-            Hola, soy{' '}
+            {t.hero.greeting}{' '}
             <span
               data-hero-underline
               className="bg-[linear-gradient(currentColor,currentColor)] box-decoration-clone bg-size-[100%_4px] bg-bottom-left bg-no-repeat pb-1 text-primary"
@@ -77,8 +79,8 @@ const Hero = () => {
             </span>
           </h1>
 
-          <h2 data-hero-role className="mb-4 text-lg font-semibold text-ink-muted sm:text-xl md:text-2xl">
-            {profile.role}
+          <h2 key={lang} data-hero-role className="mb-4 text-lg font-semibold text-ink-muted sm:text-xl md:text-2xl">
+            {t.profile.role}
           </h2>
 
           <ul className="mb-6 flex flex-wrap justify-center gap-2 lg:justify-start">
@@ -94,7 +96,7 @@ const Hero = () => {
           </ul>
 
           <p data-hero-item className="mb-8 text-[0.95rem] leading-[1.7] text-ink-muted sm:text-base md:text-lg">
-            {profile.summary}
+            {t.profile.summary}
           </p>
 
           <div
@@ -103,12 +105,12 @@ const Hero = () => {
           >
             <Magnetic className={BUTTON_WIDTH}>
               <Button href="#projects" className="w-full">
-                Ver Proyectos
+                {t.hero.viewProjects}
               </Button>
             </Magnetic>
             <Magnetic className={BUTTON_WIDTH}>
               <Button href="#contact" variant="secondary" className="w-full">
-                Contactar
+                {t.hero.contact}
               </Button>
             </Magnetic>
             <Magnetic className={BUTTON_WIDTH}>
@@ -125,7 +127,7 @@ const Hero = () => {
             >
               <img
                 src={profile.photo}
-                alt={`Foto de ${profile.name}`}
+                alt={t.hero.photoAlt(profile.name)}
                 width="300"
                 height="300"
                 fetchPriority="high"

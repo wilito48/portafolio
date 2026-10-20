@@ -1,13 +1,15 @@
 import { useRef } from 'react';
 import TechIcon from '../ui/TechIcon';
 import { skillCategories } from '../../data/skills';
+import { useLanguage } from '../../hooks/useLanguage';
+import { techLabel } from '../../i18n/localize';
 import { gsap, MOTION_OK, ScrollTrigger, useGSAP } from '../../lib/gsap';
 
 const technologies = skillCategories.flatMap(({ skills }) => skills);
 const LOOP_DURATION = 45;
 const MAX_BOOST = 5;
 
-const TechList = ({ hidden }) => (
+const TechList = ({ hidden, t }) => (
   <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-4 pr-4">
     {technologies.map((name) => (
       <li
@@ -15,7 +17,7 @@ const TechList = ({ hidden }) => (
         className="flex items-center gap-2.5 rounded-full border border-line bg-surface-muted px-4 py-2 text-sm font-semibold whitespace-nowrap text-ink"
       >
         <TechIcon name={name} className="size-5" />
-        {name}
+        {techLabel(name, t)}
       </li>
     ))}
   </ul>
@@ -23,6 +25,7 @@ const TechList = ({ hidden }) => (
 
 const TechMarquee = () => {
   const scopeRef = useRef(null);
+  const { t } = useLanguage();
 
   useGSAP(
     () => {
@@ -56,13 +59,13 @@ const TechMarquee = () => {
   return (
     <section
       ref={scopeRef}
-      aria-label="Tecnologías con las que trabajo"
+      aria-label={t.marquee.label}
       className="overflow-hidden border-y border-line bg-surface py-6"
     >
       <div className="[mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
         <div data-marquee-track className="flex w-max">
-          <TechList />
-          <TechList hidden />
+          <TechList t={t} />
+          <TechList t={t} hidden />
         </div>
       </div>
     </section>

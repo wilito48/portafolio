@@ -37,7 +37,7 @@ export const techIcons = {
   Java: { icon: FaJava, color: '#E76F00' },
   'Spring Boot': { icon: SiSpringboot, color: '#6DB33F' },
   Python: { icon: SiPython, color: '#3776AB' },
-  'APIs REST': { icon: TbApi, color: '#3B82F6' },
+  'REST APIs': { icon: TbApi, color: '#3B82F6' },
   Webhooks: { icon: TbWebhook, color: '#8B5CF6' },
   JWT: { icon: SiJsonwebtokens },
   'Socket.IO': { icon: SiSocketdotio },

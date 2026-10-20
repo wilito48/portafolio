@@ -89,7 +89,7 @@ const ExperienceTimeline = ({ items }) => {
       </span>
 
       {items.map((item) => (
-        <li key={item.company} data-reveal className="relative flex items-start gap-4 pb-11 last:pb-0 md:gap-8">
+        <li key={item.id} data-reveal className="relative flex items-start gap-4 pb-11 last:pb-0 md:gap-8">
           <span className="relative z-10 mt-1 flex shrink-0 justify-center md:w-[100px]" aria-hidden="true">
             <span
               data-timeline-dot

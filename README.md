@@ -35,13 +35,29 @@ src/
 │   └── ui/               Button, IconButton, SectionHeader, TechIcon, ThemeToggle…
 ├── hooks/                Scroll, sección activa, tema y animaciones de entrada
 ├── context/              Proveedor de tema
+├── i18n/                 Proveedor de idioma, diccionarios es/en y utilidades de traducción
 ├── lib/gsap.js           Registro de GSAP y ScrollTrigger
 └── assets/
     ├── images/           Foto de perfil
     └── icons/            Íconos decorativos (nav, contact, about, flags)
 ```
 
-Para cambiar textos o datos basta con editar `src/data/`. El CV descargable está en `public/cv-kervyn-rojas.pdf`.
+Los datos neutros (íconos, enlaces, tecnologías, imágenes) viven en `src/data/` y todos los textos en
+`src/i18n/locales/es.js` y `src/i18n/locales/en.js`.
+
+## Idiomas (ES / EN)
+
+- El botón ES | EN del header cambia el idioma; la elección se guarda en el navegador.
+- En la primera visita se usa el idioma del navegador (español o, si no, inglés).
+- Para cambiar un texto, edítalo en ambos archivos de `src/i18n/locales/`; tienen exactamente la misma estructura.
+- Al agregar un proyecto, añade sus datos en `src/data/projects.js` y su título, descripción y características
+  en `projects.items.<slug>` de ambos idiomas.
+
+## Vista previa al compartir
+
+`public/og-image.png` (1200×630) es la imagen que aparece al compartir el enlace en LinkedIn, WhatsApp o X.
+Las etiquetas están en `index.html` y usan el dominio `portafolio-sigma-fawn.vercel.app`; si cambias de dominio,
+actualiza esas URLs. El CV descargable está en `public/cv-kervyn-rojas.pdf`.
 
 ## Agregar capturas a un proyecto
 

@@ -1,13 +1,15 @@
 import { useState } from 'react';
+import { useLanguage } from '../../hooks/useLanguage';
 
 const Shot = ({ image, title }) => {
   const [failed, setFailed] = useState(false);
+  const { t } = useLanguage();
 
   if (!image || failed) {
     return (
       <div className="flex size-full flex-col items-center justify-center gap-2 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.25),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(139,92,246,0.25),transparent_60%),#0f172a] p-4 text-center text-sm text-slate-400">
         <span className="text-lg font-bold text-slate-200">{title}</span>
-        <span>Capturas próximamente</span>
+        <span>{t.projects.comingSoon}</span>
       </div>
     );
   }

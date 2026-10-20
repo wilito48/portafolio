@@ -3,20 +3,22 @@ import { FaCode, FaFilter } from 'react-icons/fa';
 import SectionHeader from '../ui/SectionHeader';
 import ProjectCard from '../projects/ProjectCard';
 import { CATEGORIES, projects } from '../../data/projects';
+import { useLanguage } from '../../hooks/useLanguage';
+import { localizeProject } from '../../i18n/localize';
 import { Flip, gsap, MOTION_OK, ScrollTrigger, useGSAP } from '../../lib/gsap';
 
 const Lightbox = lazy(() => import('../projects/Lightbox'));
 
-const ALL = 'todos';
+const ALL = 'all';
 
 const filters = [
-  { id: ALL, label: 'Todos', icon: '📁', count: projects.length },
+  { id: ALL, icon: '📁', count: projects.length },
   ...Object.entries(CATEGORIES)
-    .map(([id, { label, icon }]) => ({ id, label, icon, count: projects.filter((p) => p.category === id).length }))
+    .map(([id, { icon }]) => ({ id, icon, count: projects.filter((p) => p.category === id).length }))
     .filter((filter) => filter.count > 0),
 ];
 
-const FilterButton = ({ filter, isActive, onSelect }) => (
+const FilterButton = ({ filter, label, isActive, onSelect }) => (
   <button
     type="button"
     aria-pressed={isActive}
@@ -28,7 +30,7 @@ const FilterButton = ({ filter, isActive, onSelect }) => (
     }`}
   >
     <span aria-hidden="true">{filter.icon}</span>
-    {filter.label}
+    {label}
     <span
       className={`min-w-[22px] rounded-full px-1.5 py-px text-center text-xs ${
         isActive ? 'bg-white/25' : 'bg-blue-500/12'
@@ -44,6 +46,7 @@ const Projects = () => {
   const [viewer, setViewer] = useState(null);
   const listRef = useRef(null);
   const flipState = useRef(null);
+  const { t } = useLanguage();
 
   const selectFilter = (id) => {
     if (id === activeFilter) return;
@@ -76,8 +79,11 @@ const Projects = () => {
   );
 
   const filteredProjects = useMemo(
-    () => (activeFilter === ALL ? projects : projects.filter((p) => p.category === activeFilter)),
-    [activeFilter]
+    () =>
+      projects
+        .filter((project) => activeFilter === ALL || project.category === activeFilter)
+        .map((project) => localizeProject(project, t)),
+    [activeFilter, t]
   );
 
   return (
@@ -86,22 +92,18 @@ const Projects = () => {
       className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc,#e2e8f0)] py-16 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.1),transparent_50%)] md:py-24 dark:bg-[linear-gradient(135deg,#0f172a,#1e293b)]"
     >
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 md:px-8">
-        <SectionHeader
-          icon={FaCode}
-          variant="vivid"
-          title="Mis Proyectos"
-          subtitle="Una muestra de mi trabajo en desarrollo web y móvil. Toca cualquier captura para verla en pantalla completa."
-        />
+        <SectionHeader icon={FaCode} variant="vivid" title={t.projects.title} subtitle={t.projects.subtitle} />
 
         <div
           role="group"
-          aria-label="Filtrar proyectos por categoría"
+          aria-label={t.projects.filterLabel}
           className="mx-auto mb-10 flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-[18px] border border-white/40 bg-white/80 p-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-md md:mb-14 md:gap-3 dark:border-slate-400/20 dark:bg-slate-800/80"
         >
           {filters.map((filter) => (
             <FilterButton
               key={filter.id}
               filter={filter}
+              label={t.projects.categories[filter.id]}
               isActive={activeFilter === filter.id}
               onSelect={selectFilter}
             />
@@ -122,8 +124,8 @@ const Projects = () => {
         {filteredProjects.length === 0 && (
           <div className="rounded-[20px] bg-white/80 px-8 py-16 text-center text-slate-500 dark:bg-slate-800/80 dark:text-slate-400">
             <FaFilter className="mx-auto mb-4 text-5xl" aria-hidden="true" />
-            <h3 className="mb-2 text-xl font-semibold text-ink">No hay proyectos en esta categoría</h3>
-            <p>Intenta seleccionar otra categoría o revisa todos los proyectos.</p>
+            <h3 className="mb-2 text-xl font-semibold text-ink">{t.projects.emptyTitle}</h3>
+            <p>{t.projects.emptyText}</p>
           </div>
         )}
       </div>

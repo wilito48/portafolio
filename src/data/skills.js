@@ -4,7 +4,7 @@ import englishFlag from '../assets/icons/flags/en.png';
 
 export const skillCategories = [
   {
-    title: 'Backend',
+    id: 'backend',
     icon: FaServer,
     skills: [
       'Node.js',
@@ -14,30 +14,30 @@ export const skillCategories = [
       'Java',
       'Spring Boot',
       'Python',
-      'APIs REST',
+      'REST APIs',
       'Webhooks',
       'JWT',
       'Socket.IO',
     ],
   },
   {
-    title: 'Frontend y Móvil',
+    id: 'frontend',
     icon: FaLayerGroup,
     skills: ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'React Native (Expo)', 'Flutter'],
   },
   {
-    title: 'Bases de Datos e IA',
+    id: 'data',
     icon: FaDatabase,
     skills: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'LangChain', 'OpenAI API'],
   },
   {
-    title: 'Pruebas y DevOps',
+    id: 'devops',
     icon: FaTools,
     skills: ['Jest', 'JUnit', 'Git', 'GitHub Actions', 'Docker', 'Linux', 'Nginx'],
   },
 ];
 
 export const languages = [
-  { name: 'Español', level: 'Nativo', tone: 'native', flag: spanishFlag },
-  { name: 'Inglés', level: 'Básico (lectura técnica)', tone: 'learning', flag: englishFlag },
+  { id: 'es', tone: 'native', flag: spanishFlag },
+  { id: 'en', tone: 'learning', flag: englishFlag },
 ];

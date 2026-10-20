@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { integrations } from '../../data/integrations';
+import { useLanguage } from '../../hooks/useLanguage';
 import { gsap, MOTION_OK, useGSAP } from '../../lib/gsap';
 
 const ORBIT_DURATION = 40;
@@ -27,6 +28,7 @@ const OrbitChip = ({ name, icon: Icon, color, angle }) => (
 
 const ProfileOrbit = ({ children }) => {
   const scopeRef = useRef(null);
+  const { t } = useLanguage();
 
   useGSAP(
     () => {
@@ -75,14 +77,14 @@ const ProfileOrbit = ({ children }) => {
           aria-hidden="true"
           className="absolute inset-0 rounded-full border border-dashed border-blue-500/30 dark:border-blue-400/25"
         />
-        <ul data-orbit aria-label="Integraciones que he desarrollado" className="absolute inset-0">
+        <ul data-orbit aria-label={t.hero.integrationsLabel} className="absolute inset-0">
           {integrations.map((integration, index) => (
             <OrbitChip key={integration.name} {...integration} angle={(360 / integrations.length) * index - 90} />
           ))}
         </ul>
         {children}
       </div>
-      <figcaption className="text-xs font-medium text-ink-faint">Integraciones que llevé a producción</figcaption>
+      <figcaption className="text-xs font-medium text-ink-faint">{t.hero.integrationsCaption}</figcaption>
     </figure>
   );
 };

@@ -1,10 +1,10 @@
 const BAR = 'absolute left-0 h-0.5 w-full rounded-full bg-current transition-all duration-300';
 
-const MenuButton = ({ isOpen, onToggle }) => (
+const MenuButton = ({ isOpen, onToggle, labels }) => (
   <button
     type="button"
     onClick={onToggle}
-    aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+    aria-label={isOpen ? labels.close : labels.open}
     aria-expanded={isOpen}
     className={`cursor-pointer rounded-lg p-2.5 transition hover:bg-blue-600/10 hover:text-primary lg:hidden ${
       isOpen ? 'text-primary' : 'text-ink'

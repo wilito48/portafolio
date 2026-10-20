@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { ThemeProvider } from './context/ThemeProvider';
+import { LanguageProvider } from './i18n/LanguageProvider';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import Header from './components/layout/Header';
 import ScrollProgress from './components/layout/ScrollProgress';
@@ -18,18 +19,20 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <ScrollProgress />
-      <Header />
-      <main ref={mainRef}>
-        <Hero />
-        <TechMarquee />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
+      <LanguageProvider>
+        <ScrollProgress />
+        <Header />
+        <main ref={mainRef}>
+          <Hero />
+          <TechMarquee />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+        <BackToTop />
+      </LanguageProvider>
     </ThemeProvider>
   );
 };

@@ -5,6 +5,7 @@ import { PhoneFrame, ScreenFrame } from './DeviceFrame';
 import ScrollTilt from './ScrollTilt';
 import Shot from './Shot';
 import { CATEGORIES } from '../../data/projects';
+import { useLanguage } from '../../hooks/useLanguage';
 import { useTrackScroll } from '../../hooks/useTrackScroll';
 import { gsap, MOTION_OK, useGSAP } from '../../lib/gsap';
 
@@ -18,34 +19,40 @@ const frameLabel = (project) => {
 const STAGE =
   'relative rounded-2xl bg-[radial-gradient(circle_at_15%_85%,rgba(59,130,246,0.18),transparent_55%),radial-gradient(circle_at_85%_15%,rgba(139,92,246,0.18),transparent_55%),#eef2ff] p-[clamp(1rem,4%,2rem)] dark:bg-[radial-gradient(circle_at_15%_85%,rgba(59,130,246,0.2),transparent_55%),radial-gradient(circle_at_85%_15%,rgba(139,92,246,0.2),transparent_55%),#0f172a]';
 
-const ZoomButton = ({ image, onOpen, onPhone }) => (
-  <button
-    type="button"
-    onClick={(event) => onOpen(image.index, event.currentTarget.parentElement.querySelector('img'))}
-    aria-label={`Ampliar: ${image.alt}`}
-    className="group/zoom absolute inset-0 cursor-zoom-in rounded-xl"
-  >
-    <span
-      aria-hidden="true"
-      className={`absolute grid size-[34px] scale-90 place-items-center rounded-full bg-blue-600/90 text-sm text-white opacity-0 transition-all duration-300 group-hover/zoom:scale-100 group-hover/zoom:opacity-100 group-focus-visible/zoom:opacity-100 ${
-        onPhone ? 'bottom-[10%] left-1/2 -translate-x-1/2' : 'top-[42px] left-2.5'
-      }`}
+const ZoomButton = ({ image, onOpen, onPhone }) => {
+  const { t } = useLanguage();
+  return (
+    <button
+      type="button"
+      onClick={(event) => onOpen(image.index, event.currentTarget.parentElement.querySelector('img'))}
+      aria-label={t.projects.zoom(image.alt)}
+      className="group/zoom absolute inset-0 cursor-zoom-in rounded-xl"
     >
-      <FiMaximize2 />
-    </span>
-  </button>
-);
+      <span
+        aria-hidden="true"
+        className={`absolute grid size-[34px] scale-90 place-items-center rounded-full bg-blue-600/90 text-sm text-white opacity-0 transition-all duration-300 group-hover/zoom:scale-100 group-hover/zoom:opacity-100 group-focus-visible/zoom:opacity-100 ${
+          onPhone ? 'bottom-[10%] left-1/2 -translate-x-1/2' : 'top-[42px] left-2.5'
+        }`}
+      >
+        <FiMaximize2 />
+      </span>
+    </button>
+  );
+};
 
-const ArrowButtons = ({ onPrev, onNext, prevDisabled, nextDisabled }) => (
-  <div className="ml-auto flex gap-2">
-    <IconButton label="Anterior" onClick={onPrev} disabled={prevDisabled}>
-      <FiArrowLeft />
-    </IconButton>
-    <IconButton label="Siguiente" onClick={onNext} disabled={nextDisabled}>
-      <FiArrowRight />
-    </IconButton>
-  </div>
-);
+const ArrowButtons = ({ onPrev, onNext, prevDisabled, nextDisabled }) => {
+  const { t } = useLanguage();
+  return (
+    <div className="ml-auto flex gap-2">
+      <IconButton label={t.projects.previous} onClick={onPrev} disabled={prevDisabled}>
+        <FiArrowLeft />
+      </IconButton>
+      <IconButton label={t.projects.next} onClick={onNext} disabled={nextDisabled}>
+        <FiArrowRight />
+      </IconButton>
+    </div>
+  );
+};
 
 const Counter = ({ children }) => (
   <span className="shrink-0 text-sm font-semibold text-ink-muted tabular-nums" aria-live="polite">
@@ -54,6 +61,7 @@ const Counter = ({ children }) => (
 );
 
 const ScreenGallery = ({ project, screens, phone, onOpen }) => {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
   const stageRef = useRef(null);
   const direction = useRef(0);
@@ -112,7 +120,7 @@ const ScreenGallery = ({ project, screens, phone, onOpen }) => {
           <div
             className="scrollbar-none flex min-w-0 gap-2 overflow-x-auto p-[3px]"
             role="tablist"
-            aria-label="Capturas"
+            aria-label={t.projects.screenshots}
           >
             {screens.map((image, i) => (
               <button
@@ -120,7 +128,7 @@ const ScreenGallery = ({ project, screens, phone, onOpen }) => {
                 type="button"
                 role="tab"
                 aria-selected={i === active}
-                aria-label={`Ver captura ${i + 1}`}
+                aria-label={t.projects.viewScreenshot(i + 1)}
                 onClick={() => select(i, i > active ? 1 : -1)}
                 className={`aspect-[16/10] w-16 shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-300 ${
                   i === active ? 'border-blue-500 opacity-100' : 'border-transparent opacity-55 hover:opacity-85'
@@ -138,6 +146,7 @@ const ScreenGallery = ({ project, screens, phone, onOpen }) => {
 };
 
 const PhoneGallery = ({ project, phones, onOpen }) => {
+  const { t } = useLanguage();
   const { trackRef, canPrev, canNext, scrollByItem } = useTrackScroll();
   const items = phones.length ? phones : [null];
 
@@ -166,7 +175,7 @@ const PhoneGallery = ({ project, phones, onOpen }) => {
 
       {phones.length > 1 && (
         <div className="flex min-h-10 items-center gap-3">
-          <Counter>{pad(phones.length)} pantallas</Counter>
+          <Counter>{t.projects.screenCount(phones.length)}</Counter>
           <ArrowButtons
             onPrev={() => scrollByItem(-1)}
             onNext={() => scrollByItem(1)}

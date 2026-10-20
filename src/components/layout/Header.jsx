@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import LanguageToggle from '../ui/LanguageToggle';
 import ThemeToggle from '../ui/ThemeToggle';
 import MenuButton from './MenuButton';
 import Navigation from './Navigation';
@@ -6,6 +7,7 @@ import { navigation } from '../../data/navigation';
 import { profile } from '../../data/profile';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { useHideOnScroll } from '../../hooks/useHideOnScroll';
+import { useLanguage } from '../../hooks/useLanguage';
 import { useScrolledPast } from '../../hooks/useScrolledPast';
 
 const SECTION_IDS = navigation.map(({ id }) => id);
@@ -14,6 +16,7 @@ const SCROLL_GAP = 20;
 const Header = () => {
   const headerRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
   const isScrolled = useScrolledPast(50);
   const [activeSection, setActiveSection] = useActiveSection(SECTION_IDS, headerRef);
   useHideOnScroll(headerRef, isMenuOpen);
@@ -47,8 +50,13 @@ const Header = () => {
 
         <div className="flex items-center gap-1 lg:gap-3">
           <Navigation isOpen={isMenuOpen} activeId={activeSection} onSelect={scrollToSection} />
+          <LanguageToggle />
           <ThemeToggle />
-          <MenuButton isOpen={isMenuOpen} onToggle={() => setIsMenuOpen((open) => !open)} />
+          <MenuButton
+            isOpen={isMenuOpen}
+            onToggle={() => setIsMenuOpen((open) => !open)}
+            labels={{ open: t.ui.openMenu, close: t.ui.closeMenu }}
+          />
         </div>
       </div>
     </header>
